@@ -1,12 +1,13 @@
 
 body {
-    background-color: silver;
+    background-color: grey;
     color: black;
 }
 
 .navbar {
     background-color: silver !important;
     color: black;
+    text-align: center;
 }
 
 .navbar .nav-link {
@@ -21,7 +22,18 @@ body {
     color: #333;
 }
 
+.navbar-light, .navbar-toggler-icon {
+    color: black !important;
+}
+
+/* Ensure the footer stays at the bottom of the page */
 footer {
     background-color: silver;
     color: black;
+    position: absolute; /* Position it absolutely relative to the page */
+    bottom: 0;          /* Push it to the bottom */
+    width: 100%;        /* Make the footer span the entire width */
+    text-align: center; /* Center the content in the footer */
+    padding: 10px 0;    /* Add some padding to the footer */
 }
+

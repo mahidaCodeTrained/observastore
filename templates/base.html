@@ -15,80 +15,80 @@
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container-fluid">  <!-- Full-width container -->
-            <!-- Observastore Home Button -->
-            <a class="navbar-brand" href="{% url 'home' %}">Observastore</a>
-            
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">  <!-- 'ml-auto' makes it align right -->
-
-                    <!-- Links for all users even if not signed in-->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href=""></a>
-                    </li>
-
-                    <!-- Check if the user is authenticated then if they are show new links.-->
-                    {% if request.user.is_authenticated %}
-                        <!-- Authenticated Users: Dropdown for profile and management links -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ request.user.username }}
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container-fluid">  <!-- Full-width container -->
+                <!-- Observastore Home Button -->
+                <a class="navbar-brand" href="{% url 'home' %}">Observastore</a>
+    
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <!-- Desktop Search Bar (hidden on mobile/tablets) -->
+                <form class="form-inline ml-auto my-2 my-lg-0 d-none d-lg-flex" action="#" method="GET">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search products..." aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+    
+                <!-- Navbar Links -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">  <!-- 'ml-auto' makes it align right -->
+    
+                        <!-- Links for all users even if not signed in-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Reviews</a>
+                        </li>
+    
+                        <!-- Check if the user is authenticated then if they are show new links.-->
+                        {% if request.user.is_authenticated %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ request.user.username }}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    {% if request.user.is_superuser %}
+                                        <a href="" class="dropdown-item">Management</a>
+                                    {% endif %}
+                                    <a href="" class="dropdown-item">My Profile</a>
+                                    <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                                </div>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a href="{% url 'account_signup' %}" class="nav-link">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'account_login' %}" class="nav-link">Login</a>
+                            </li>
+                        {% endif %}
+    
+                        <!-- Mobile Search Bar inside Dropdown -->
+                        <li class="nav-item dropdown d-block d-lg-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSearch" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Search
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <!-- Superuser: Management link: this is only meant for the superuser -->
-                                {% if request.user.is_superuser %}
-                                    <a href="" class="dropdown-item">Product Management</a>
-                                {% endif %}
-                                <!-- Profile Link for users to check their purchases or history -->
-                                <a href="" class="dropdown-item">My Profile</a>
-                                <!-- Logout Link for all signed in users. -->
-                                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownSearch">
+                                <!-- Search Form for Mobile/Tablets -->
+                                <form class="form-inline p-2" action="#" method="GET">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Search products..." aria-label="Search">
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                </form>
                             </div>
                         </li>
-                    {% else %}
-                        <!-- Unauthenticated Users: Register and Login links -->
-                        <li class="nav-item">
-                            <a href="{% url 'account_signup' %}" class="nav-link">Register</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{% url 'account_login' %}" class="nav-link">Login</a>
-                        </li>
-                    {% endif %}
-
-                    <!-- Search Bar Dropdown - Visible only on tablet and mobile -->
-                    <li class="nav-item dropdown d-block d-lg-none">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Search
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <!-- Search Form - Only visible on mobile -->
-                            <form class="form-inline p-2" action="#" method="GET">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search products..." aria-label="Search">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                            </form>
-                        </div>
-                    </li>
-                </ul>
+                    </ul>
+                </div>
             </div>
-
-            <!-- Search Bar for Desktop -->
-            <form class="form-inline ml-3 my-2 my-lg-0 d-none d-lg-flex" action="#" method="GET">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search products..." aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
+        </nav>
+    </header>
+    
+    
 
     <!-- Main Content (Centered) -->
     <div class="container mt-5 pt-5">
