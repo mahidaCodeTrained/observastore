@@ -2,6 +2,7 @@
 body {
     background-color: grey;
     color: black;
+    height: 100vh;
 }
 
 .navbar {
@@ -32,16 +33,22 @@ body {
     padding: 0 15px; 
 }
 
+#hero-img-section {
+    height: 100%;
+    width: 100%;
+}
+
 
 
 /* Ensure the footer stays at the bottom of the page */
 footer {
     background-color: silver;
     color: black;
-    position: absolute; /* Position it absolutely relative to the page */
-    bottom: 0;          /* Push it to the bottom */
+    position: absolute; /* Position it absolutely relative to the page */          /* Push it to the bottom */
     width: 100%;        /* Make the footer span the entire width */
     text-align: center; /* Center the content in the footer */
     padding: 10px 0;    /* Add some padding to the footer */
+    bottom: 0;
+    
 }
 
