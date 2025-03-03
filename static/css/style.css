@@ -22,9 +22,17 @@ body {
     color: #333;
 }
 
-.navbar-light, .navbar-toggler-icon {
-    color: black !important;
+.navbar-nav {
+    display: flex;
+    justify-content: space-around; /* Or use 'space-evenly' if you want a little more even distribution */
+    width: 100%;
 }
+
+.navbar-nav .nav-item {
+    padding: 0 15px; 
+}
+
+
 
 /* Ensure the footer stays at the bottom of the page */
 footer {
