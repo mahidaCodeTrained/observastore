@@ -1,0 +1,27 @@
+
+body {
+    background-color: silver;
+    color: black;
+}
+
+.navbar {
+    background-color: silver !important;
+    color: black;
+}
+
+.navbar .nav-link {
+    color: black;
+}
+
+.navbar .navbar-brand {
+    color: black;
+}
+
+.navbar .nav-item:hover .nav-link {
+    color: #333;
+}
+
+footer {
+    background-color: silver;
+    color: black;
+}
