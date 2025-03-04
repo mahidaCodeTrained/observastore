@@ -1,5 +1,5 @@
 
-html {
+body {
     background-color: grey;
     color: black;
     height: 100vh;
@@ -7,12 +7,26 @@ html {
 
 body {
     background-color: grey;
+    background: url('/media/pexels-stefanprutschphotography-6471068.jpg');
+    background-size: cover;
+    font-family: "Montserrat", sans-serif;
 }
 
 .navbar {
     background-color: silver !important;
     color: black;
     text-align: center;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: black !important;
+    
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color:darkblue !important;
+    transform:scale(1.1);
+        
 }
 
 .navbar .nav-link {
@@ -40,8 +54,12 @@ body {
 #hero-img-section {
     height: 640px;
     width: 100%;
+    background: url('/media/stargazing.jpg');
     background-color: black;
-    margin-top: 50px;
+    margin-top: 5%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #hero-container {
@@ -62,3 +80,15 @@ footer {
     
 }
 
+
+@media screen and (max-width: 999px) {
+    #hero-img-section {
+        margin-top: 5%;
+    }
+}
+
+@media screen and (min-height: 1100px) {
+    #hero-img-section {
+        margin-top: 100px;
+    }
+}
