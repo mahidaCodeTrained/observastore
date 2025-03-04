@@ -1,8 +1,5 @@
-
-body {
-    background-color: grey;
-    color: black;
-    height: 100vh;
+html {
+    overflow-x: hidden;
 }
 
 body {
@@ -10,6 +7,8 @@ body {
     background: url('/media/pexels-stefanprutschphotography-6471068.jpg');
     background-size: cover;
     font-family: "Montserrat", sans-serif;
+    height: 100vh;
+    color: black;
 }
 
 .navbar {
@@ -66,17 +65,35 @@ body {
     margin-top: 165px;
 }
 
+#delivery-banner {
+    background-color: black;
+    color: green; 
+    text-align: center; 
+    padding: 15px 0; 
+    font-size: 18px; 
+    font-weight: bold;  
+    position: fixed; 
+    margin-top: 60px; 
+    width: -webkit-fill-available;
+}
+
+.mb-1, .my-1 {
+    margin-bottom: .25rem !important;
+    padding: 10px;
+
+}
+
 
 
 /* Ensure the footer stays at the bottom of the page */
 footer {
     background-color: silver;
     color: black;
-    position: absolute; /* Position it absolutely relative to the page */          /* Push it to the bottom */
     width: 100%;        /* Make the footer span the entire width */
     text-align: center; /* Center the content in the footer */
     padding: 10px 0;    /* Add some padding to the footer */
     bottom: 0;
+    position: fixed;
     
 }
 
