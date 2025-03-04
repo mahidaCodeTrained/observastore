@@ -34,17 +34,41 @@
     
                 <!-- Navbar Links -->
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">  <!-- 'ml-auto' makes it align right -->
+                    <ul class="navbar-nav ml-auto">
     
                         <!-- Links for all users even if not signed in-->
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'home' %}">Home</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="">Reviews</a>
+                        </li>
+    
+                        <!-- New "All Products" Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="allProductsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                All Products
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="allProductsDropdown">
+                                
+                                <h6 class="dropdown-header">Sort by:</h6>
+                                <a class="dropdown-item" href="#">Price</a>
+                                <a class="dropdown-item" href="#">Rating</a>
+                                <a class="dropdown-item" href="#">Category</a>
+                                <a class="dropdown-item" href="#">All</a>
+                            </div>
+                        </li>
+    
+                        <!-- Goods Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="goodsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Goods
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="goodsDropdown">
+                                <a class="dropdown-item" href="#">Telescopes</a>
+                                <a class="dropdown-item" href="#">Globes</a>
+                                <a class="dropdown-item" href="#">T-Shirts</a>
+                            </div>
                         </li>
     
                         <!-- Check if the user is authenticated then if they are show new links.-->
@@ -105,7 +129,8 @@
             </div>
         </nav>
     </header>
-    <!-- Main Content (Centered) -->
+    
+    <!-- Main Content  -->
     <div class="pt-5">
         {% block content %}
         <!-- Area for main content -->
