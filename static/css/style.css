@@ -10,7 +10,7 @@ body {
     color: black;
     margin: 0;
     padding-top: 80px; /* Add padding-top to avoid content being hidden behind the navbar */
-    min-height: 100vh; /* Ensure the body covers the entire height of the viewport */
+    
 }
 
 .row {
@@ -28,6 +28,7 @@ body {
     width: 100%;
     z-index: 1030; /* Keep navbar above other content */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds a shadow for a 3D effect */
+    
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -80,6 +81,10 @@ body {
     z-index: 1020; /* Just below the navbar */
 }
 
+#aboutpage {
+    height: 700px;
+}
+
 footer {
     background-color: silver;
     color: black;
@@ -88,7 +93,7 @@ footer {
     padding: 10px 0;
     bottom: 0;
     left: 0;
-    z-index: 1010; /* Ensure footer stays on top of content but below navbar */
+    position: fixed;
 }
 
 @media screen and (min-width: 280px) {
@@ -99,7 +104,7 @@ footer {
 
 @media screen and (min-width: 999px) {
     #hero-img-section {
-        margin-top: 5%;
+        margin-top: 2%;
     }
 
     .navbar {
