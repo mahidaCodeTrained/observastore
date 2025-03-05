@@ -34,5 +34,21 @@ class AboutPageModelTest(TestCase):
         updated_on = self.about_page.updated_on.replace(microsecond=0)
         self.assertGreater(updated_on, initial_updated_on)
 
+    def test_empty_mission_field(self):
+        """Im testing if a mission field can be left empty"""
+        about_page = AboutPage.objects.create(
+            title="New About Page",
+            mission="",  # Empty mission
+            history="We just started.",
+            why_shop_here="Best deals.",
+        )
+        self.assertEqual(about_page.mission, "")
+
+    def test_about_page_fields(self):
+        """Testing that all the fields that have been said and that should be there on the model are there."""
+        fields = [f.name for f in AboutPage._meta.get_fields()]
+        expected_fields = ['id', 'title', 'mission', 'history', 'why_shop_here', 'updated_on']
+        self.assertTrue(all(field in fields for field in expected_fields))
+
 
 
