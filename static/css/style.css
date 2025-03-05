@@ -91,14 +91,26 @@ footer {
     z-index: 1010; /* Ensure footer stays on top of content but below navbar */
 }
 
-@media screen and (max-width: 999px) {
-    #hero-img-section {
-        margin-top: 5%;
+@media screen and (min-width: 280px) {
+    .navbar {
+        padding: .5rem 1rem;
     }
 }
 
+@media screen and (min-width: 999px) {
+    #hero-img-section {
+        margin-top: 5%;
+    }
+
+    .navbar {
+        padding: 0;
+    }
+}
+   
 @media screen and (min-height: 1100px) {
     #hero-img-section {
   
     }
+
+
 }
