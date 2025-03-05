@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>{{ about.title }}</title>
+{% endblock %}
+
+{% block content %}
+    <!-- Main Row for Layout -->
+    <div class="row justify-content-center mt-5 pt-5"> <!-- Added pt-5 to add top padding below the navbar -->
+        <!-- Left Column for Image -->
+        <div class="col-lg-6 col-md-6 col-12">
+            <div class="image-box">
+                <img src="/media/pexels-philevenphotos-25606279.jpg" alt="About Us Image" class="img-fluid rounded shadow-lg">
+            </div>
+        </div>
+
+        <!-- Right Column for Text -->
+        <div class="col-lg-6 col-md-6 col-12">
+            <div class="content-box p-4 rounded shadow-lg">
+                <header class="text-center mb-4 text-white">
+                    <h1>{{ about.title }}</h1>
+                </header>
+
+                <section id="mission" class="my-4 text-white">
+                    <h2>Mission</h2>
+                    <p>{{ about.mission|safe }}</p> <!-- Apply |safe to render HTML content -->
+                </section>
+
+                <section id="history" class="my-4 text-white">
+                    <h2>History</h2>
+                    <p>{{ about.history|safe }}</p> <!-- Apply |safe to render HTML content -->
+                </section>
+
+                <section id="why-shop-here" class="my-4 text-white">
+                    <h2>Why Shop Here?</h2>
+                    <p>{{ about.why_shop_here|safe }}</p> <!-- Apply |safe to render HTML content -->
+                </section>
+
+                <section class="text-center mt-4 text-white">
+                    <p><strong>Last updated on:</strong> {{ about.updated_on }}</p>
+                </section>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
