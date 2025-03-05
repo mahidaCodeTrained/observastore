@@ -7,47 +7,50 @@ body {
     background: url('/media/pexels-stefanprutschphotography-6471068.jpg');
     background-size: cover;
     font-family: "Montserrat", sans-serif;
-    height: 100vh;
     color: black;
+    margin: 0;
+    padding-top: 80px; /* Add padding-top to avoid content being hidden behind the navbar */
+    min-height: 100vh; /* Ensure the body covers the entire height of the viewport */
+}
+
+.row {
+    margin-right: 0;
+    margin-left: 0;
 }
 
 .navbar {
     background-color: silver !important;
     color: black;
     text-align: center;
+    position: fixed; /* Make navbar fixed */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1030; /* Keep navbar above other content */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds a shadow for a 3D effect */
 }
 
 .navbar-light .navbar-nav .nav-link {
     color: black !important;
-    
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
-    color:darkblue !important;
-    transform:scale(1.1);
-        
-}
-
-.navbar .nav-link {
-    color: black;
+    color: darkblue !important;
+    transform: scale(1.1);
 }
 
 .navbar .navbar-brand {
     color: black;
 }
 
-.navbar .nav-item:hover .nav-link {
-    color: #333;
-}
-
 .navbar-nav {
     display: flex;
-    justify-content: space-around; /* Or use 'space-evenly' if you want a little more even distribution */
+    justify-content: space-around;
     width: 100%;
 }
 
 .navbar-nav .nav-item {
-    padding: 0 15px; 
+    padding: 0 15px;
 }
 
 #hero-img-section {
@@ -55,7 +58,6 @@ body {
     width: 100%;
     background: url('/media/stargazing.jpg');
     background-color: black;
-    margin-top: 5%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -67,36 +69,27 @@ body {
 
 #delivery-banner {
     background-color: black;
-    color: green; 
-    text-align: center; 
-    padding: 15px 0; 
-    font-size: 18px; 
-    font-weight: bold;  
-    position: fixed; 
-    margin-top: 60px; 
-    width: -webkit-fill-available;
+    color: green;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: bold;
+    position: fixed;
+    top: 60px; /* Positioned below the navbar */
+    width: 100%; /* Ensure it spans the full width */
+    z-index: 1020; /* Just below the navbar */
 }
 
-.mb-1, .my-1 {
-    margin-bottom: .25rem !important;
-    padding: 10px;
-
-}
-
-
-
-/* Ensure the footer stays at the bottom of the page */
 footer {
     background-color: silver;
     color: black;
-    width: 100%;        /* Make the footer span the entire width */
-    text-align: center; /* Center the content in the footer */
-    padding: 10px 0;    /* Add some padding to the footer */
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
     bottom: 0;
-    position: fixed;
-    
+    left: 0;
+    z-index: 1010; /* Ensure footer stays on top of content but below navbar */
 }
-
 
 @media screen and (max-width: 999px) {
     #hero-img-section {
@@ -106,6 +99,6 @@ footer {
 
 @media screen and (min-height: 1100px) {
     #hero-img-section {
-        margin-top: 100px;
+  
     }
 }
