@@ -15,7 +15,7 @@ class AboutPageModelTest(TestCase):
         )
     
     def test_about_page_works(self):
-        
-        self.assertEqual(AboutPage.objects.count(), 1)
+        self.assertEqual(self.about_page.title, "About Us")
+        self.assertEqual(self.about_page.mission, "This will fail")
 
 
