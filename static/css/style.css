@@ -10,7 +10,22 @@ body {
     color: black;
     margin: 0;
     padding-top: 80px; /* Add padding-top to avoid content being hidden behind the navbar */
-    
+    min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
+    display: flex;
+    flex-direction: column; /* Align the content and footer properly */
+}
+
+footer {
+    background-color: silver;
+    color: black;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    z-index: 1000; /* Ensure footer is at the bottom */
+    margin-top: auto; /* Push footer to the bottom if content is short */
 }
 
 .row {
@@ -28,7 +43,6 @@ body {
     width: 100%;
     z-index: 1030; /* Keep navbar above other content */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds a shadow for a 3D effect */
-    
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -42,6 +56,7 @@ body {
 
 .navbar .navbar-brand {
     color: black;
+    font-weight: 600;
 }
 
 .navbar-nav {
@@ -79,43 +94,36 @@ body {
     top: 60px; /* Positioned below the navbar */
     width: 100%; /* Ensure it spans the full width */
     z-index: 1020; /* Just below the navbar */
+    margin-top: -10px;
 }
 
 #aboutpage {
-    height: 700px;
+    min-height: 80vh;
+    padding-bottom: 20px;
+    overflow: auto;
 }
 
-footer {
-    background-color: silver;
-    color: black;
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-    bottom: 0;
-    left: 0;
-    position: fixed;
-}
 
 @media screen and (min-width: 280px) {
     .navbar {
         padding: .5rem 1rem;
     }
+
+    #about-font-size {
+        font-size: 24px;
+    }
 }
 
 @media screen and (min-width: 999px) {
     #hero-img-section {
-        margin-top: 2%;
+        margin-top: 4%;
     }
 
     .navbar {
         padding: 0;
     }
 }
-   
-@media screen and (min-height: 1100px) {
-    #hero-img-section {
-  
-    }
 
 
-}
+
+
