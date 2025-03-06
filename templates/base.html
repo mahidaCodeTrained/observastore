@@ -46,19 +46,17 @@
                         </li>
     
                         <!-- New "All Products" Dropdown -->
-                        <li class="nav-item dropdown">
+                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="allProductsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                All Products
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="allProductsDropdown">
-                                
-                                <h6 class="dropdown-header">Sort by:</h6>
-                                <a class="dropdown-item" href="#">Price</a>
-                                <a class="dropdown-item" href="#">Rating</a>
-                                <a class="dropdown-item" href="#">Category</a>
-                                <a class="dropdown-item" href="#">All</a>
-                            </div>
-                        </li>
+                                All Products</a>
+                                <div class="dropdown-menu" aria-labelledby="allProductsDropdown">
+                                    <h6 class="dropdown-header">Sort by:</h6><a class="dropdown-item" href="#">Price</a>
+                                    <a class="dropdown-item" href="#">Rating</a>
+                                    <a class="dropdown-item" href="#">Category</a>
+                                    <a class="dropdown-item" href="#">All</a>
+                                </div>
+                            </li>
+
     
                         <!-- Goods Dropdown -->
                         <li class="nav-item dropdown">
@@ -149,10 +147,35 @@
     </footer>
 
     <!-- Bootstrap JS  -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <!-- Use the full jQuery version -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>  <!-- Full version of jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/6cc20290e7.js" crossorigin="anonymous"></script>
+
+    <!-- Dropdown Slide Animation for the links such as search, all products and goods. -->
+    <script>
+        $(document).ready(function() {
+            // Toggle slide down/up on dropdown click
+            $(".nav-item.dropdown").click(function(e) {
+                var $this = $(this);
+                var $dropdownMenu = $this.find('.dropdown-menu');
+
+                $('.dropdown-menu').not($dropdownMenu).slideUp('200');
+
+                $dropdownMenu.stop(true, true).slideToggle(200);
+                
+        
+                e.stopPropagation();
+            });
+
+            $(document).click(function(e) {
+                if (!$(e.target).closest('.nav-item.dropdown').length) {
+                    $('.dropdown-menu').slideUp(200);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
 
