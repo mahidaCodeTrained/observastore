@@ -1,0 +1,26 @@
+[
+    {
+      "pk": 1,
+      "model": "storefront.category",
+      "fields": {
+        "name": "telescopes",
+        "display_name": "Telescopes"
+      }
+    },
+    {
+      "pk": 2,
+      "model": "storefront.category",
+      "fields": {
+        "name": "globes",
+        "display_name": "Globes"
+      }
+    },
+    {
+      "pk": 3,
+      "model": "storefront.category",
+      "fields": {
+        "name": "t-shirts",
+        "display_name": "T-Shirts"
+      }
+    }
+  ]
