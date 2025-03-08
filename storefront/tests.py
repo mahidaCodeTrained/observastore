@@ -5,7 +5,8 @@ from .models import StoreGoods, Category
 
 
 class StoreGoodsTesting(TestCase):
-    """ I am testing the StoreGoods model to make sure that the model behaves as intended."""
+    """ I am testing the StoreGoods model to make sure that the model behaves 
+    as intended."""
 
     def setUp(self):
         # Creating setUp for easy use of unittesting to avoid repeating code.
@@ -21,11 +22,10 @@ class StoreGoodsTesting(TestCase):
             weight=None,
             image=None
         )
-    
+
     def test_storegoods_created(self):
-        self.assertEqual(self.product.name, " not Telescope")
-        self.assertEqual(self.product.sku, "123456")
-        self.assertEqual(self.product.price, "199.999")
-        self.assertEqual(self.product.category.name, "Telescopess")
-
-
+        self.assertEqual(self.product.name, "Telescope")
+        self.assertEqual(self.product.sku, "12345")
+        self.assertEqual(self.product.price, "199.99")
+        self.assertEqual(self.product.category.name, "Telescopes")
+        self.assertEqual(self.product.weight, None)
