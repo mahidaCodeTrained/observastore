@@ -7,18 +7,20 @@
         <div class="row">
             {% for product in products %}
                 <div class="col-lg-3 col-md-6 col-sm-12 mb-4"> <!-- 4 products per row on desktop, 2 on tablet, 1 on mobile -->
-                    <div class="product-item p-3 border rounded shadow-sm" style="background-color: rgba(255, 255, 255, 0.8);">
-                        <h2 class="text-center">{{ product.name }}</h2>
+                    <a href="{% url 'product_details' product.id %}" class="text-decoration-none text-dark">
+                        <div class="product-item p-3 border rounded shadow-sm" style="background-color: rgba(255, 255, 255, 0.8);">
+                            <h2 class="text-center">{{ product.name }}</h2>
 
-                        {% if product.image %}
-                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid mx-auto d-block" style="width: 100%; height: 200px; object-fit: cover;">
-                        {% else %}
-                            <img src="/media/pexels-thirdman-8495471.jpg" alt="No image available" class="img-fluid mx-auto d-block" style="width: 100%; height: 200px; object-fit: cover;">
-                        {% endif %}
+                            {% if product.image %}
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid mx-auto d-block" style="width: 100%; height: 200px; object-fit: contain;">
+                            {% else %}
+                                <img src="/media/pexels-thirdman-8495471.jpg" alt="No image available" class="img-fluid mx-auto d-block" style="width: 100%; height: 200px; object-fit: cover;">
+                            {% endif %}
 
-                        <p>{{ product.description }}</p>
-                        <p><strong>Price: ${{ product.price }}</strong></p>
-                    </div>
+                            <p>{{ product.description }}</p>
+                            <p><strong>Price: ${{ product.price }}</strong></p>
+                        </div>
+                    </a>
                 </div>
             {% empty %}
                 <p>No products available.</p>
@@ -26,6 +28,7 @@
         </div>
     </div>
 {% endblock %}
+
 
 
 
