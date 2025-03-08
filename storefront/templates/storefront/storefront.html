@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="text-center my-4">Our Products</h1>
+
+    <div class="container">
+        <div class="row">
+            {% for product in products %}
+                <div class="col-md-3 mb-4">  <!-- 4 products per row -->
+                    <div class="product-item p-3 border rounded shadow-sm" style="background-color: rgba(211, 211, 211, 0.5);">
+                        <h2 class="text-center">{{ product.name }}</h2>
+                        <p>{{ product.description }}</p>
+                        <p><strong>Price: ${{ product.price }}</strong></p>
+
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid mx-auto d-block" style="max-width: 200px;">
+                        {% else %}
+                            <img src="/media/pexels-thirdman-8495471.jpg" alt="No image available" class="img-fluid mx-auto d-block">
+                        {% endif %}
+                    </div>
+                </div>
+            {% empty %}
+                <p>No products available.</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+

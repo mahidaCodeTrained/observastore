@@ -14,7 +14,7 @@ class Category(models.Model):
 
     def get_visual_name(self):
         return self.visual_name
-    
+
 
 class StoreGoods(models.Model):
     category = models.ForeignKey(

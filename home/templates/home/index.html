@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+
+{% url 'storefront' as storefront_url %}
 {% load static %}
 
 {% block content %}
@@ -7,9 +9,11 @@
         <div class="container" id="hero-container">
             <h1 class="display-5 mb-4">Welcome to Observastore</h1>
             <p class="lead">Your one-stop shop for telescopes and accessories. Explore the stars with the best equipment!</p>
-            <a href="#shop" class="btn btn-light btn-lg">Explore the Shop</a>
+            <a href="{% url 'storefront' %}" class="btn btn-light btn-lg">Explore the Shop</a>
         </div>
     </section>
 
 {% endblock %}
+
+
 
