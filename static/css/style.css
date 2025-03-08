@@ -113,6 +113,15 @@ footer {
     overflow: auto;
 }
 
+.product-item {
+    background-color: aliceblue;
+}
+
+#product-h1 {
+    color: white;
+    padding: 3rem;
+}
+
 
 @media screen and (min-width: 280px) {
     .navbar {
