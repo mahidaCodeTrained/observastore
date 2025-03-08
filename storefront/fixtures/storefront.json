@@ -1,0 +1,210 @@
+[
+    {
+        "model": "storefront.storegoods",
+        "pk": 1,
+        "fields": {
+            "category": 1,
+            "sku": "TEL-001",
+            "name": "Basic Telescope",
+            "description": "A simple beginner-friendly telescope for star gazing.",
+            "price": "150.00",
+            "weight": "3.5",
+            "image": "https://images.pexels.com/photos/6091663/pexels-photo-6091663.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        }
+    },
+    {
+        "model": "storefront.storegoods",
+        "pk": 2,
+        "fields": {
+            "category": 1,
+            "sku": "TEL-002",
+            "name": "Advanced Telescope",
+            "description": "A high-performance telescope with advanced features.",
+            "price": "350.00",
+            "weight": "5.0",
+            "image": "https://pixabay.com/photos/telescope-solar-telescope-4806386/"
+        }
+    },
+    {
+        "model": "storefront.storegoods",
+        "pk": 3,
+        "fields": {
+            "category": 2,
+            "sku": "GLOBE-001",
+            "name": "Globe of the Earth",
+            "description": "A detailed globe showing Earth's continents and oceans.",
+            "price": "30.00",
+            "weight": "1.0",
+            "image": "https://images.pexels.com/photos/269724/pexels-photo-269724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        }
+    },
+    {
+        "model": "storefront.storegoods",
+        "pk": 4,
+        "fields": {
+            "category": 3,
+            "sku": "TSHIRT-001",
+            "name": "Journey Design T-Shirt",
+            "description": "A stylish t-shirt with an astronomy-themed design.",
+            "price": "20.00",
+            "weight": "0.3",
+            "image": "https://img.freepik.com/free-vector/hand-drawn-retro-space-poster-template_52683-143293.jpg?t=st=1741442503~exp=1741446103~hmac=2a5a6e26f2d8ac97f0751b7df405cca055381312a128e2683cef6781961943b5&w=740"
+        }
+    },
+    {
+        "model": "storefront.storegoods",
+        "pk": 5,
+        "fields": {
+            "category": 1,
+            "sku": "TEL-003",
+            "name": "Pro Telescope",
+            "description": "A professional-grade telescope for serious astronomy enthusiasts.",
+            "price": "650.00",
+            "weight": "7.0",
+            "image": "https://pixabay.com/photos/spotting-observation-telescope-1504365/"
+        }
+    },
+    {
+        "model": "storefront.storegoods",
+        "pk": 6,
+        "fields": {
+            "category": 1,
+            "sku": "TEL-004",
+            "name": "Portable Telescope",
+            "description": "A compact and lightweight telescope, perfect for traveling.",
+            "price": "100.00",
+            "weight": "2.0",
+            "image": "https://pixabay.com/photos/observation-observe-sunglasses-2816680/"
+        }
+    },
+    {
+        "model": "storefront.storegoods",
+        "pk": 7,
+        "fields": {
+            "category": 1,
+            "sku": "TEL-005",
+            "name": "Kids Telescope",
+            "description": "A beginner telescope designed specifically for kids.",
+            "price": "30.00",
+            "weight": "1.5",
+            "image": "https://pixabay.com/photos/child-boy-blonde-curls-telescope-4573129/"
+        }
+    },
+    {
+        "model": "storefront.storegoods",
+        "pk": 8,
+        "fields": {
+            "category": 2,
+            "sku": "GLOBE-002",
+            "name": "Moon Globe",
+            "description": "A a custom built Globe with the Moon's features and discoveries noted.",
+            "price": "45.00",
+            "weight": "1.2",
+            "image": "https://pixabay.com/photos/full-moon-night-sky-luna-moon-1869760/"
+        }
+    },
+    {
+        "model": "storefront.storegoods",
+        "pk": 9,
+        "fields": {
+            "category": 2,
+            "sku": "GLOBE-003",
+            "name": "Saturn Globe",
+            "description": "A globe of the planet Saturn custom made",
+            "price": "80.00",
+            "weight": "2.0",
+            "image": "https://pixabay.com/photos/astronomy-space-universe-saturn-6924051/"
+        }
+    },
+    {
+        "model": "storefront.storegoods",
+        "pk": 10,
+        "fields": {
+            "category": 2,
+            "sku": "GLOBE-004",
+            "name": "Jupiter Globe",
+            "description": "A globe of planet Jupiter custom made",
+            "price": "25.00",
+            "weight": "0.8",
+            "image": "https://pixabay.com/photos/space-jupiter-astronomy-universe-4869815/"
+        }
+    },
+    {
+        "model": "storefront.storegoods",
+        "pk": 11,
+        "fields": {
+            "category": 3,
+            "sku": "TSHIRT-002",
+            "name": "Space Legend T-Shirt",
+            "description": "A t-shirt featuring a Space Legend design with an Astronaut.",
+            "price": "25.00",
+            "weight": "0.3",
+            "image": "https://img.freepik.com/free-vector/vintage-monochrome-astonaut-poster_225004-732.jpg?t=st=1741442611~exp=1741446211~hmac=8b9cd98556a9753fcb95a1482899089dd5b22ff318659cbbd730487db6e26efb&w=740"
+        }
+    },
+    {
+        "model": "storefront.storegoods",
+        "pk": 12,
+        "fields": {
+            "category": 3,
+            "sku": "TSHIRT-003",
+            "name": "See Mars T-Shirt",
+            "description": "A t-shirt featuring a Mars print.",
+            "price": "30.00",
+            "weight": "0.3",
+            "image": "https://img.freepik.com/free-photo/journey-planet-mars-concept_23-2150063215.jpg?t=st=1741442719~exp=1741446319~hmac=0224013d3d987249deef7e83949c57bb069984cdd53d1c1cf81cb98741ea249c&w=740"
+        }
+    },
+    {
+        "model": "storefront.storegoods",
+        "pk": 13,
+        "fields": {
+            "category": 1,
+            "sku": "TEL-006",
+            "name": "Lunar Telescope",
+            "description": "A telescope optimized for moon observation.",
+            "price": "120.00",
+            "weight": "3.0",
+            "image": "https://images.pexels.com/photos/30152008/pexels-photo-30152008/free-photo-of-starry-night-stargazing-in-ohrid.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        }
+    },
+    {
+        "model": "storefront.storegoods",
+        "pk": 14,
+        "fields": {
+            "category": 1,
+            "sku": "TEL-007",
+            "name": "Space Exploration Telescope",
+            "description": "A telescope built for viewing deep space objects.",
+            "price": "500.00",
+            "weight": "6.0",
+            "image": "https://images.pexels.com/photos/7387475/pexels-photo-7387475.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        }
+    },
+    {
+        "model": "storefront.storegoods",
+        "pk": 15,
+        "fields": {
+            "category": 2,
+            "sku": "GLOBE-005",
+            "name": "Mars Globe",
+            "description": "A custom globe of the planet Mars",
+            "price": "60.00",
+            "weight": "1.5",
+            "image": "https://pixabay.com/photos/mars-red-planet-planet-space-11012/"
+        }
+    },
+    {
+        "model": "storefront.storegoods",
+        "pk": 16,
+        "fields": {
+            "category": 3,
+            "sku": "TSHIRT-004",
+            "name": "SpaceMan DJ T-Shirt",
+            "description": "A Spaceman jamming out to music t-shirt design.",
+            "price": "28.00",
+            "weight": "0.3",
+            "image": "https://img.freepik.com/free-vector/dancing-astronaut-spacemen-character-space-suit-sunglasses_1441-3240.jpg?t=st=1741443221~exp=1741446821~hmac=800743342dd308b19e499bb33a8062cf5220d6abd1269acd2b89396fd16469fe&w=740"
+        }
+    }
+]

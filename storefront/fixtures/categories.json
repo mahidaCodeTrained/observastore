@@ -4,7 +4,7 @@
       "model": "storefront.category",
       "fields": {
         "name": "telescopes",
-        "display_name": "Telescopes"
+        "visual_name": "Telescopes"
       }
     },
     {
@@ -12,7 +12,7 @@
       "model": "storefront.category",
       "fields": {
         "name": "globes",
-        "display_name": "Globes"
+        "visual_name": "Globes"
       }
     },
     {
@@ -20,7 +20,7 @@
       "model": "storefront.category",
       "fields": {
         "name": "t-shirts",
-        "display_name": "T-Shirts"
+        "visual_name": "T-Shirts"
       }
     }
   ]
