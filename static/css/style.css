@@ -114,12 +114,29 @@ footer {
 }
 
 .product-item {
-    background-color: aliceblue;
+    background-color: rgba(255, 255, 255, 0.5); /* White with 90% opacity */
+    font-style: oblique;
+}
+
+.product-item p {
+    color: black;
+    font-weight: 600;
+}
+
+.overlay {
+    background-color: white;
 }
 
 #product-h1 {
     color: white;
-    padding: 3rem;
+    margin-top: 3.5rem;
+    background-color: darkslategray;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+#product-row {
+    padding: 20px;
 }
 
 

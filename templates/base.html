@@ -50,10 +50,10 @@
                             <a class="nav-link dropdown-toggle" href="#" id="allProductsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 All Products</a>
                                 <div class="dropdown-menu" aria-labelledby="allProductsDropdown">
-                                    <h6 class="dropdown-header">Sort by:</h6><a class="dropdown-item" href="#">Price</a>
-                                    <a class="dropdown-item" href="#">Rating</a>
-                                    <a class="dropdown-item" href="#">Category</a>
-                                    <a class="dropdown-item" href="#">All</a>
+                                    <h6 class="dropdown-header">Sort by:</h6><a class="dropdown-item" href="#">Telescopes</a>
+                                    <a class="dropdown-item" href="#">Globes</a>
+                                    <a class="dropdown-item" href="#">T-Shirts</a>
+                                    <a class="dropdown-item" href="{% url 'storefront' %}">All Products</a>
                                 </div>
                             </li>
 
@@ -61,12 +61,13 @@
                         <!-- Goods Dropdown -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="goodsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Goods
+                                Goods Filter
                             </a>
                             <div class="dropdown-menu" aria-labelledby="goodsDropdown">
-                                <a class="dropdown-item" href="#">Telescopes</a>
-                                <a class="dropdown-item" href="#">Globes</a>
-                                <a class="dropdown-item" href="#">T-Shirts</a>
+                                <h6 class="dropdown-header">Sort by:</h6>
+                                <a class="dropdown-item" href="#">By Price</a>
+                                <a class="dropdown-item" href="#">By Weight</a>
+                                <a class="dropdown-item" href="#">By Alphabetical Order</a>
                             </div>
                         </li>
     
