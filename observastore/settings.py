@@ -31,7 +31,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    'observastore-5005d64a3140.herokuapp.com/'
+    'observastore-5005d64a3140.herokuapp.com'
 
 
 ]
