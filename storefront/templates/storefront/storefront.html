@@ -13,6 +13,16 @@
 
         <h1 class="text-center my-4" id="product-h1">Our Products</h1>
 
+        <!-- Show category message if a category filter is applied -->
+        {% if current_categories %}
+            <div class="alert alert-info text-center">
+                Showing products for category: 
+                {% for category in current_categories %}
+                    <strong>{{ category.name }}</strong>{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+
         <div class="row justify-content-center">
             {% for product in products %}
                 <div class="col-lg-3 col-md-4 col-sm-6 mb-3 d-flex justify-content-center">
@@ -45,6 +55,7 @@
         </div>
     </div>
 {% endblock %}
+
 
 
 

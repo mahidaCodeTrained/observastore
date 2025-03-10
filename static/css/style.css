@@ -124,7 +124,7 @@ footer {
 #product-h1 {
     color: white;
     margin-top: 3.5rem;
-    background-color: darkslategray;
+    background-color: black 0.4;
     text-transform: uppercase;
     text-decoration: underline;
 }
