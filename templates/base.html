@@ -46,17 +46,18 @@
                         </li>
     
                         <!-- New "All Products" Dropdown -->
-                         <li class="nav-item dropdown">
+                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="allProductsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Our Products</a>
-                                <div class="dropdown-menu" aria-labelledby="allProductsDropdown">
-                                    <h6 class="dropdown-header">View By:</h6><a class="dropdown-item" href="{% url 'storefront' %}?category=telescopes">Telescopes</a>
-                                    <a class="dropdown-item" href="{% url 'storefront' %}?category=globes">Globes</a>
-                                    <a class="dropdown-item" href="{% url 'storefront' %}?category=t-shirts">T-Shirts</a>
-                                    <a class="dropdown-item" href="{% url 'storefront' %}">All Products</a>
-                                </div>
-                            </li>
-
+                                Our Products
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="allProductsDropdown">
+                                <h6 class="dropdown-header">View By:</h6>
+                                <a class="dropdown-item" href="{% url 'storefront' %}?category=Telescopes">Telescopes</a>
+                                <a class="dropdown-item" href="{% url 'storefront' %}?category=Globes">Globes</a>
+                                <a class="dropdown-item" href="{% url 'storefront' %}?category=T-Shirts">T-Shirts</a>
+                                <a class="dropdown-item" href="{% url 'storefront' %}">All Products</a>
+                            </div>
+                        </li>
     
                         <!-- Goods Dropdown -->
                         <li class="nav-item dropdown">
@@ -65,9 +66,10 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="goodsDropdown">
                                 <h6 class="dropdown-header">Sort by:</h6>
-                                <a class="dropdown-item" href="#">By Price</a>
-                                <a class="dropdown-item" href="#">By Weight</a>
-                                <a class="dropdown-item" href="#">By Alphabetical Order</a>
+                                <a class="dropdown-item" href="{% url 'storefront' %}?sort=price_asc">By Price: Low to High</a>
+                                <a class="dropdown-item" href="{% url 'storefront' %}?sort=price_desc">By Price: High to Low</a>
+                                <a class="dropdown-item" href="{% url 'storefront' %}?sort=weight_asc">By Weight: Low to High</a>
+                                <a class="dropdown-item" href="{% url 'storefront' %}?sort=weight_desc">By Weight: High to Low</a>
                             </div>
                         </li>
     
@@ -131,13 +133,14 @@
         <!-- Code taken from Boutique Ado by Code Institute -->
         <div id="delivery-banner" class="row text-center">
             <div class="col bg-black">
-              <h4 class="logo-font my-1">Free delivery on orders over ${{ free_shipping_threshold }}!</h4>
+                <h4 class="logo-font my-1">Free delivery on orders over ${{ free_shipping_threshold }}!</h4>
             </div>
-          </div>
+        </div>
     </header>
+    
 
     <!-- Main Content  -->
-    <div class="pt-2">
+    <div class="">
         {% block content %}
         <!-- Area for main content -->
         {% endblock %}

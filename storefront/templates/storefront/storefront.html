@@ -11,12 +11,21 @@
             </div>
         {% endif %}
 
-        <h1 class="text-center my-4" id="product-h1">Our Products</h1>
+        <div class="text-center" id="product-menu">
+            <h1 class="text-center" id="product-h1">Storefront</h1>
 
-        <!-- Show category message if a category filter is applied -->
+            <!-- Category Filter Buttons -->
+            <div class="text-center mb-4" id="cat-button">
+                <a href="{% url 'storefront' %}?category=Telescopes" class="btn btn-outline-primary mx-2">Telescopes</a>
+                <a href="{% url 'storefront' %}?category=Globes" class="btn btn-outline-primary mx-2">Globes</a>
+                <a href="{% url 'storefront' %}?category=T-Shirts" class="btn btn-outline-primary mx-2">T-Shirts</a>
+                <a href="{% url 'storefront' %}" class="btn btn-outline-primary mx-2">All Products</a>
+            </div>
+        </div>
+
         {% if current_categories %}
             <div class="alert alert-info text-center">
-                Showing products for category: 
+                Showing products for Category: 
                 {% for category in current_categories %}
                     <strong>{{ category.name }}</strong>{% if not forloop.last %}, {% endif %}
                 {% endfor %}
@@ -55,6 +64,8 @@
         </div>
     </div>
 {% endblock %}
+
+
 
 
 
