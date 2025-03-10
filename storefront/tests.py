@@ -44,6 +44,19 @@ class StoreGoodsViewTests(TestCase):
         self.assertContains(response, self.product1.name)
         self.assertContains(response, self.product3.name)
         self.assertNotContains(response, self.product2.name)
+    
+    def test_view_store_goods_with_search(self):
+        response = self.client.get(reverse('storefront') + '?q=Telescope A')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Telescope A')
+        self.assertNotContains(response, 'Globe A')
+
+    def test_detailed_product_view(self):
+        response = self.client.get(reverse('product_details', args=[self.product1.id]))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, self.product1.name)
+        self.assertContains(response, self.product1.description)
+        self.assertContains(response, f"${self.product1.price}")
 
 
 
