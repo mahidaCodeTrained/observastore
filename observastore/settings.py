@@ -128,7 +128,7 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-     
+
 
 
 
