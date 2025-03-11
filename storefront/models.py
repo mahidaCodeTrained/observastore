@@ -23,6 +23,7 @@ class StoreGoods(models.Model):
     name = models.CharField(max_length=254)
     description = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
+    sizes = models.BooleanField(default=False, null=True, blank=True)
     weight = models.DecimalField(
         max_digits=6, decimal_places=2, null=True, blank=True)
     image = CloudinaryField('image', null=True, blank=True)
