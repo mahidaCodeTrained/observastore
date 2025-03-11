@@ -22,7 +22,16 @@
                                     <img src="{{ item.product.image.url }}" class="card-img-top" alt="{{ item.product.name }}">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ item.product.name }}</h5>
-                                        <p class="card-text"><strong>Size: </strong>{% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
+
+                                        <!-- Displaying the size -->
+                                        <p class="card-text"><strong>Size: </strong>
+                                            {% if item.product.sizes %}
+                                                {{ item.size|default:"N/A"|upper }}
+                                            {% else %}
+                                                N/A
+                                            {% endif %}
+                                        </p>
+
                                         <p class="card-text"><strong>Weight: </strong>{{ item.product.weight }}kg</p>
                                         <p class="card-text"><strong>Price: </strong>${{ item.product.price }}</p>
                                         <p class="card-text"><strong>Quantity: </strong>{{ item.quantity }}</p>
