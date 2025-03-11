@@ -30,7 +30,7 @@ def view_shopping_bag(request):
         except StoreGoods.DoesNotExist:
             continue  # Skip if the product doesn't exist (though ideally it shouldn't happen)
 
-    # Pass the list of items and the total price to the template
+
     context = {
         'bag_items': bag_items,
         'total_price': total_price
@@ -52,18 +52,16 @@ def add_to_bag(request, item_id):
 
     # Check if the item is already in the bag
     if str(item_id) in bag:
-        # If the product is already in the bag, update its quantity
+        
         bag[str(item_id)] += quantity
         messages.success(request, f'Updated quantity for "{product.name}" to {bag[str(item_id)]}')
     else:
-        # If the product is not in the bag, add it with the specified quantity
+    
         bag[str(item_id)] = quantity
         messages.success(request, f'Added "{product.name}" to your bag')
 
-    # Save the updated bag in the session
     request.session['bag'] = bag
 
-    # Redirect to the desired page or to the storefront if no redirect URL is provided
     return redirect(redirect_url or 'storefront')
 
 
