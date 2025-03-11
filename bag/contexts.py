@@ -1,6 +1,7 @@
 from decimal import Decimal, ROUND_HALF_UP
 from django.conf import settings
 from storefront.models import StoreGoods
+from django.shortcuts import get_object_or_404
 
 
 def bag_contents(request):
@@ -12,19 +13,30 @@ def bag_contents(request):
     total = Decimal('0.00')
     product_count = 0
 
-    for item_id, quantity in bag.items():
-        try:
+    for item_id, item_data in bag.items():
+        if isinstance(item_data, int):
             product = StoreGoods.objects.get(id=item_id)
-            total += product.price * quantity
-            product_count += quantity
+            total += product.price * item_data
+            product_count += item_data
 
             bag_items.append({
                 'product': product,
-                'quantity': quantity,
-                'total_price': product.price * quantity
+                'quantity': item_data,
+                'total_price': product.price * item_data,
+                'size': 'N/A'
             })
-        except StoreGoods.DoesNotExist:
-            continue  # If the product doesn't exist, skip it
+        else:  # Product with sizes
+            product = get_object_or_404(StoreGoods, pk=item_id)
+            for size, quantity in item_data['items_by_size'].items():
+                total += quantity * product.price
+                product_count += quantity
+                bag_items.append({
+                    'item_id': item_id,
+                    'product': product,
+                    'quantity': quantity,
+                    'size': size,
+                    'total_price': product.price * quantity
+                })
 
     # Calculate delivery and grand total
     if total < settings.FREE_DELIVERY_THRESHOLD:
@@ -36,7 +48,6 @@ def bag_contents(request):
 
     grand_total = (total + delivery).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
 
-    # Returning the context with the required values
     context = {
         'bag_items': bag_items,
         'total': total.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP),
@@ -48,5 +59,6 @@ def bag_contents(request):
     }
 
     return context
+
 
 
