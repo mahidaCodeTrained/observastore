@@ -186,7 +186,7 @@ footer {
 }
 
 .blockbody {
-    background-color: grey;
+    background-color: white;
 }
 
 @media screen and (min-width: 280px) {
