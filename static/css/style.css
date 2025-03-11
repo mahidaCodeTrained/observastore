@@ -156,6 +156,10 @@ footer {
     background-color: black;
 }
 
+.alert-warning {
+    margin: 10px;
+}
+
 @media screen and (min-width: 280px) {
     .navbar {
         padding: .5rem 1rem;
