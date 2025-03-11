@@ -16,11 +16,46 @@
 
             <!-- Category Filter Buttons -->
             <div class="text-center mb-4" id="cat-button">
-                <a href="{% url 'storefront' %}?category=Telescopes" class="btn btn-outline-primary mx-2">Telescopes</a>
-                <a href="{% url 'storefront' %}?category=Globes" class="btn btn-outline-primary mx-2">Globes</a>
-                <a href="{% url 'storefront' %}?category=T-Shirts" class="btn btn-outline-primary mx-2">T-Shirts</a>
-                <a href="{% url 'storefront' %}" class="btn btn-outline-primary mx-2">All Products</a>
+                <a href="{% url 'storefront' %}?category=Telescopes{% if sort_by %}&sort={{ sort_by }}{% endif %}" class="btn btn-outline-primary mx-2 {% if 'Telescopes' in current_categories %}active{% endif %}">Telescopes</a>
+                <a href="{% url 'storefront' %}?category=Globes{% if sort_by %}&sort={{ sort_by }}{% endif %}" class="btn btn-outline-primary mx-2 {% if 'Globes' in current_categories %}active{% endif %}">Globes</a>
+                <a href="{% url 'storefront' %}?category=T-Shirts{% if sort_by %}&sort={{ sort_by }}{% endif %}" class="btn btn-outline-primary mx-2 {% if 'T-Shirts' in current_categories %}active{% endif %}">T-Shirts</a>
+                <a href="{% url 'storefront' %}" class="btn btn-outline-primary mx-2 {% if not current_categories %}active{% endif %}">All Products</a>
             </div>
+
+            <!-- Sorting Dropdown -->
+            <div class="row">
+                <div class="product-container col-10 offset-1">
+                    <div class="row mt-1 mb-2">
+                        <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
+                            <div class="sort-select-wrapper w-50">
+                                <form method="get" action="{% url 'storefront' %}" id="sortForm">
+                                    {% if current_categories %}
+                                        <input type="hidden" name="category" value="{{ current_categories.0.name }}">
+                                    {% endif %}
+                                    <select name="sort" class="custom-select custom-select-sm rounded-0 border {% if sort_by != 'None_None' %}info{% else %}black{% endif %}" onchange="this.form.submit()">
+                                        <option value="reset" {% if sort_by == 'None_None' %}selected{% endif %}>Sort by...</option>
+                                        <option value="price_asc" {% if sort_by == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
+                                        <option value="price_desc" {% if sort_by == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
+                                        <option value="weight_asc" {% if sort_by == 'weight_asc' %}selected{% endif %}>Weight (low to high)</option>
+                                        <option value="weight_desc" {% if sort_by == 'weight_desc' %}selected{% endif %}>Weight (high to low)</option>
+                                        <option value="name_asc" {% if sort_by == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+                                        <option value="name_desc" {% if sort_by == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+                                    </select>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 order-md-first">
+                            <p class="text-muted mt-3 text-center text-md-left">
+                                {% if search_term or current_categories or sort_by != 'None_None' %}
+                                    <span class="small"><a href="{% url 'storefront' %}">Products Home</a> | </span>
+                                {% endif %}
+                                {{ products|length }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         {% if current_categories %}
@@ -64,6 +99,11 @@
         </div>
     </div>
 {% endblock %}
+
+
+
+
+
 
 
 
