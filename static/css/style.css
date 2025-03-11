@@ -185,6 +185,10 @@ footer {
     background-color:rgba(255, 255, 255, 0.5);
 }
 
+.blockbody {
+    background-color: grey;
+}
+
 @media screen and (min-width: 280px) {
     .navbar {
         padding: .5rem 1rem;
