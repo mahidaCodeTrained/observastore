@@ -23,7 +23,7 @@ footer {
     position: relative;
     bottom: 0;
     left: 0;
-    z-index: auto /* Ensure footer is at the bottom */
+    z-index: auto; /* Ensure footer is at the bottom */
     margin-top: auto; /* Push footer to the bottom if content is short */
 }
 
