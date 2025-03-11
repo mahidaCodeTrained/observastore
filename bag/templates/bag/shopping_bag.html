@@ -3,7 +3,28 @@
 
 {% block content %}
     <div class="blockbody">
-        <h1 class="text-center">Welcome to Your Shopping Bag!</h1>
-        <p class="text-center">Here you can view the items in your shopping cart and proceed to checkout.</p>
+        <div class="row">
+            <div class="col">
+                <hr>
+                <h2 class="logo-font mb-4">Shopping Bag</h2>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                {% if bag_items %}
+                    <div class="table-responsive rounded"></div>
+                {% else %}
+                    <p class="lead mb-5">Your bag is empty.</p>
+                    <a href="{% url 'storefront' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                        <span class="icon">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="text-uppercase">Keep Shopping</span>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
     </div>
 {% endblock %}
