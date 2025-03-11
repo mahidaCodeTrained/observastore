@@ -23,7 +23,7 @@ footer {
     position: relative;
     bottom: 0;
     left: 0;
-    z-index: 1000; /* Ensure footer is at the bottom */
+    z-index: auto /* Ensure footer is at the bottom */
     margin-top: auto; /* Push footer to the bottom if content is short */
 }
 
@@ -158,6 +158,31 @@ footer {
 
 .alert-warning {
     margin: 10px;
+}
+
+.product-item {
+    transition: transform 0.5s ease-in-out, box-shadow 0.4s ease-in-out;
+
+}
+
+.product-item:hover {
+    transform: scale(1.05) rotateX(5deg) rotateY(5deg);
+    
+}
+
+#backToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    display: none;  /* Initially hidden */
+}
+
+.top-button {
+    background-color:rgba(255, 255, 255, 0.5);
 }
 
 @media screen and (min-width: 280px) {
