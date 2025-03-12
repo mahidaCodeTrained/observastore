@@ -34,9 +34,34 @@
 
                                         <p class="card-text"><strong>Weight: </strong>{{ item.product.weight }}kg</p>
                                         <p class="card-text"><strong>Price: </strong>${{ item.product.price }}</p>
-                                        <p class="card-text"><strong>Quantity: </strong>{{ item.quantity }}</p>
+
+                                        <!-- Original Quantity (displayed as text) -->
+                                        <p class="card-text"><strong>Original Quantity: </strong>{{ item.quantity }}</p>
+
+    
+                                        <form action="{% url 'adjust_bag' item.product.id %}" method="POST" class="d-flex flex-column">
+                                            {% csrf_token %}
+                                        
+                                            {% if item.product.sizes %}
+                                                <input type="hidden" name="product_size" value="{{ item.size }}">
+                                            {% endif %}
+
+                                            <div class="form-group w-100 mx-auto d-flex align-items-center bg-dark text-white p-2 rounded">
+                                                <button type="button" class="btn btn-outline-light rounded-0" onclick="decreaseQuantity('{{ item.product.id }}', '{{ item.size }}')" style="flex-shrink: 0;">
+                                                    <i class="fas fa-minus"></i>
+                                                </button>
+                                                <input class="form-control text-center rounded-0 mx-2" type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99" 
+                                                       data-item_id="{{ item.product.id }}" id="id_qty_{{ item.product.id }}_{{ item.size }}" style="max-width: 100%;" onchange="updateQuantityValue('{{ item.product.id }}', '{{ item.size }}')">
+                                                <button type="button" class="btn btn-outline-light rounded-0" onclick="increaseQuantity('{{ item.product.id }}', '{{ item.size }}')" style="flex-shrink: 0;">
+                                                    <i class="fas fa-plus"></i>
+                                                </button>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary btn-sm mt-2">Update Quantity</button>
+                                        </form>
+                                        
                                         <p class="card-text"><strong>Subtotal: </strong>${{ item.total_price|floatformat:2 }}</p>
-                                        <a href="#" class="btn btn-danger btn-sm">Remove</a>
+                                        <a href="{}" class="btn btn-danger btn-sm">Remove</a>
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +113,44 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Increase quantity function all these functions additionaly ensure that the product size even if its the same product
+        // can be changed in terms of quantity.
+        function increaseQuantity(productId, size) {
+            let quantityInput = document.getElementById(`id_qty_${productId}_${size}`);
+            let currentValue = parseInt(quantityInput.value);
+            if (currentValue < 99) {
+                quantityInput.value = currentValue + 1;
+            }
+            updateQuantityValue(productId, size);
+        }
+
+
+        function decreaseQuantity(productId, size) {
+            let quantityInput = document.getElementById(`id_qty_${productId}_${size}`);
+            let currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+            updateQuantityValue(productId, size);
+        }
+
+        function updateQuantityValue(productId, size) {
+            let quantityInput = document.getElementById(`id_qty_${productId}_${size}`);
+            let quantity = quantityInput.value;
+            let form = quantityInput.closest('form');
+            let submitButton = form.querySelector('button[type="submit"]');
+            submitButton.disabled = quantity <= 0 || quantity > 99;
+        }
+    </script>
 {% endblock %}
+
+
+
+
+
+
 
 
 
