@@ -36,7 +36,6 @@ ALLOWED_HOSTS = [
 
 ]
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -57,6 +56,7 @@ INSTALLED_APPS = [
     'about',
     'storefront',
     'bag',
+    'checkout',
 ]
 
 MIDDLEWARE = [
