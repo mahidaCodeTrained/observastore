@@ -60,3 +60,18 @@ class ShoppingBagTests(TestCase):
         bag = self.client.session.get('bag', {})
         self.assertEqual(bag[str(self.product_with_size.id)]["items_by_size"]["L"], 3)
 
+    def test_adjust_bag_without_size(self):
+        """ Test adjusting the quantity of a product without size in the bag """
+        # Add product without size to bag first
+        self.add_product_to_bag(self.product_without_size)
+        
+        # Adjust the quantity of the product in the bag
+        url = reverse('adjust_bag', args=[self.product_without_size.id])
+        response = self.client.post(url, data={'quantity': 5})
+        self.assertEqual(response.status_code, 302)
+
+        # Check if the quantity was updated
+        bag = self.client.session.get('bag', {})
+        self.assertEqual(bag[str(self.product_without_size.id)], 5)
+
+
