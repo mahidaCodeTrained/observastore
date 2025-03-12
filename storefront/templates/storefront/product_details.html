@@ -28,7 +28,6 @@
                         <div class="col-md-7 d-flex flex-column">
                             <h1 class="fw-bold">{{ product.name }}</h1>
 
-                           
                             <div class="mt-3">
                                 <h4>Product Details</h4>
                                 <ul class="list-unstyled">
@@ -37,19 +36,16 @@
                                 </ul>
                             </div>
 
-                           
                             <div class="mt-auto">
-                                <p class="h4 text-danger"><strong>Price: ${{ product.price }}</strong></p>
+                                <p class="h4"><strong>Price: ${{ product.price }}</strong></p>
 
-                                
                                 <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                                     {% csrf_token %}
 
-                                
                                     {% if product.sizes %}
                                         <div class="col-12 mb-3">
                                             <p><strong>Size:</strong></p>
-                                            <select class="form-control rounded-0 w-50 mx-auto" name="size" id="id_product_size">
+                                            <select class="form-control rounded-0 w-100 mx-auto" name="size" id="id_product_size">
                                                 <option value="xs">XS</option>
                                                 <option value="s">S</option>
                                                 <option value="m" selected>M</option>
@@ -61,30 +57,40 @@
                                         <p><strong>Size: </strong>N/A</p>
                                     {% endif %}
 
-                                    <!-- Quantity Form -->
-                                    <div class="form-row">
-                                        <div class="col-12 mb-3">
-                                            <p class="mt-3"><strong>Quantity:</strong></p>
-                                            <div class="form-group w-50 mx-auto">
-                                                <input class="form-control rounded-0" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
-                                            </div>
-                                        </div>
+                                    <!-- Quantity Header with + and - buttons -->
+                                    <div class="form-row mb-3">
                                         <div class="col-12">
-                                            <!-- Keep Shopping Button -->
-                                            <a href="{% url 'storefront' %}" class="btn btn-dark rounded-0 w-100 mb-3">
-                                                <span class="icon">
-                                                    <i class="fas fa-chevron-left"></i>
-                                                </span>
-                                                <span class="text-uppercase">Keep Shopping</span>
-                                            </a>
-
-                                            <!-- Submit Button (Add to Bag) -->
-                                            <button type="submit" class="btn btn-primary rounded-0 w-100">
-                                                Add to Bag <i class="fas fa-shopping-cart"></i>
-                                            </button>
+                                            <p><strong>Quantity:</strong></p>
                                         </div>
                                     </div>
-                                    
+
+                                    <!-- Quantity Form with + and - buttons using FontAwesome icons -->
+                                    <div class="form-group w-100 mx-auto d-flex align-items-center bg-dark text-white p-2 rounded">
+                                        <button type="button" class="btn btn-outline-light rounded-0" onclick="decreaseQuantity('{{ product.id }}')" style="flex-shrink: 0;">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <input class="form-control text-center rounded-0 mx-2" type="number" name="quantity" value="1" min="1" max="99" 
+                                               data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}" style="max-width: 60px;">
+                                        <button type="button" class="btn btn-outline-light rounded-0" onclick="increaseQuantity('{{ product.id }}')" style="flex-shrink: 0;">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <!-- Keep Shopping Button -->
+                                        <a href="{% url 'storefront' %}" class="btn btn-dark rounded-0 w-100 mb-3">
+                                            <span class="icon">
+                                                <i class="fas fa-chevron-left"></i>
+                                            </span>
+                                            <span class="text-uppercase">Keep Shopping</span>
+                                        </a>
+
+                                        <!-- Submit Button (Add to Bag) -->
+                                        <button type="submit" class="btn btn-primary rounded-0 w-100">
+                                            Add to Bag <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+
                                     <input type="hidden" name="redirect_url" value="{% url 'storefront' %}">
                                 </form>
                             </div>
@@ -95,7 +101,28 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function increaseQuantity(productId) {
+            let quantityInput = document.getElementById(`id_qty_${productId}`);
+            let currentValue = parseInt(quantityInput.value);
+            if (currentValue < 99) {
+                quantityInput.value = currentValue + 1;
+            }
+        }
+
+        function decreaseQuantity(productId) {
+            let quantityInput = document.getElementById(`id_qty_${productId}`);
+            let currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        }
+    </script>
 {% endblock %}
+
+
+
 
 
 
