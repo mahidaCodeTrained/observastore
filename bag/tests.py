@@ -43,28 +43,34 @@ class ShoppingBagTests(TestCase):
         """
         Test removing an item from the bag works correctly.
         """
+        # Add product to the bag first
         self.client.post(reverse('add_to_bag', args=[self.product.id]), {'quantity': 2, 'size': 'Large'})
+
+        # Ensure the item is in the bag
         self.assertIn(str(self.product.id), self.client.session['bag'])
         self.assertEqual(self.client.session['bag'][str(self.product.id)]['items_by_size']['Large'], 2)
 
-        response = self.client.post(reverse('remove_from_bag', args=[self.product.id]), {'size': 'Large'})
+        response = self.client.get(reverse('remove_from_bag', args=[self.product.id]))
 
-        self.assertNotIn(str(self.product.id), self.client.session['bag'])
-        self.assertEqual(response.status_code, 302)  # Check redirection
-        self.assertContains(response, 'Removed')
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('shopping_bag'))
+
         self.assertNotIn(str(self.product.id), self.client.session['bag'])
 
     def test_remove_item_with_no_size(self):
         """
         Test removing an item with no size.
         """
+        
         self.client.post(reverse('add_to_bag', args=[self.product.id]), {'quantity': 2})
+
         self.assertIn(str(self.product.id), self.client.session['bag'])
         self.assertEqual(self.client.session['bag'][str(self.product.id)], 2)
 
-        response = self.client.post(reverse('remove_from_bag', args=[self.product.id]), {'size': ''})  # Passing empty string
+        response = self.client.get(reverse('remove_from_bag', args=[self.product.id]))
 
+        self.assertEqual(response.status_code, 302)  
+        self.assertRedirects(response, reverse('shopping_bag'))
         self.assertNotIn(str(self.product.id), self.client.session['bag'])
-        self.assertEqual(response.status_code, 302)  # Check redirection
-        self.assertNotIn(str(self.product.id), self.client.session['bag'])
+
 
