@@ -91,8 +91,10 @@ def adjust_bag(request, item_id):
     request.session['bag'] = bag
     return redirect(reverse('shopping_bag'))
 
+
 def remove_from_bag(request, item_id):
     """Remove a product from the shopping bag."""
+    product = get_object_or_404(StoreGoods, pk=item_id)
     size = request.POST.get('product_size', None)  # Get size if the product has sizes
     bag = request.session.get('bag', {})
 
@@ -103,14 +105,16 @@ def remove_from_bag(request, item_id):
                 del bag[str(item_id)]['items_by_size'][size]
                 if not bag[str(item_id)]['items_by_size']:  # If no more sizes left for this product
                     del bag[str(item_id)]
-                messages.success(request, f'Removed "{item_id}" size {size} from your bag.')
+                messages.success(request, f'Removed "{product.name}" size {size} from your bag.')
         else:
             # If no size or just a simple product
             del bag[str(item_id)]
-            messages.success(request, f'Removed "{item_id}" from your bag.')
+            messages.success(request, f'Removed "{product.name}" from your bag.')
 
     request.session['bag'] = bag
     return redirect(reverse('shopping_bag'))
+
+
 
 
 
