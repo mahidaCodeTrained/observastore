@@ -20,7 +20,6 @@ def add_to_bag(request, item_id):
     """
     product = get_object_or_404(StoreGoods, pk=item_id)
     quantity = int(request.POST.get('quantity', 1))
-    redirect_url = request.POST.get('redirect_url', '')
     
     size = request.POST.get('size', None)
     bag = request.session.get('bag', {})
@@ -58,7 +57,7 @@ def add_to_bag(request, item_id):
 
     request.session['bag'] = bag
 
-    return redirect(redirect_url or 'storefront')
+    return redirect('product_details', product_id=item_id)
 
 
 def adjust_bag(request, item_id):
