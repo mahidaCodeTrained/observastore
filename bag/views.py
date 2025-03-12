@@ -91,6 +91,27 @@ def adjust_bag(request, item_id):
     request.session['bag'] = bag
     return redirect(reverse('shopping_bag'))
 
+def remove_from_bag(request, item_id):
+    """Remove a product from the shopping bag."""
+    size = request.POST.get('product_size', None)  # Get size if the product has sizes
+    bag = request.session.get('bag', {})
+
+    if str(item_id) in bag:
+        if size and 'items_by_size' in bag[str(item_id)]:
+            # If the product has a size and it's in the items_by_size dictionary
+            if size in bag[str(item_id)]['items_by_size']:
+                del bag[str(item_id)]['items_by_size'][size]
+                if not bag[str(item_id)]['items_by_size']:  # If no more sizes left for this product
+                    del bag[str(item_id)]
+                messages.success(request, f'Removed "{item_id}" size {size} from your bag.')
+        else:
+            # If no size or just a simple product
+            del bag[str(item_id)]
+            messages.success(request, f'Removed "{item_id}" from your bag.')
+
+    request.session['bag'] = bag
+    return redirect(reverse('shopping_bag'))
+
 
 
 
