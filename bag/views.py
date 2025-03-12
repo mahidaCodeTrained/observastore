@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from storefront.models import StoreGoods
 from django.contrib import messages
 from .contexts import bag_contents
@@ -25,15 +25,19 @@ def add_to_bag(request, item_id):
     size = request.POST.get('size', None)
     bag = request.session.get('bag', {})
 
-    if product.sizes and size:  # If product has sizes, and a size is selected
+    # If the product has sizes and a size is selected
+    if product.sizes and size:  
         if str(item_id) in bag:
-            if 'items_by_size' in bag[str(item_id)]:
-                if size in bag[str(item_id)]['items_by_size']:
-                    bag[str(item_id)]['items_by_size'][size] += quantity
-                    messages.success(request, f'Updated quantity for "{
-                        product.name}" size {size} to {bag[str(item_id)]["items_by_size"][size]}')
+            if isinstance(bag[str(item_id)], dict):  # Check if it's a dictionary (items_by_size)
+                if 'items_by_size' in bag[str(item_id)]:
+                    if size in bag[str(item_id)]['items_by_size']:
+                        bag[str(item_id)]['items_by_size'][size] += quantity
+                        messages.success(request, f'Updated quantity for "{product.name}" size {size} to {bag[str(item_id)]["items_by_size"][size]}')
+                    else:
+                        bag[str(item_id)]['items_by_size'][size] = quantity
+                        messages.success(request, f'Added "{product.name}" size {size} to your bag')
                 else:
-                    bag[str(item_id)]['items_by_size'][size] = quantity
+                    bag[str(item_id)] = {'items_by_size': {size: quantity}}
                     messages.success(request, f'Added "{product.name}" size {size} to your bag')
             else:
                 bag[str(item_id)] = {'items_by_size': {size: quantity}}
@@ -41,10 +45,13 @@ def add_to_bag(request, item_id):
         else:
             bag[str(item_id)] = {'items_by_size': {size: quantity}}
             messages.success(request, f'Added "{product.name}" size {size} to your bag')
-    else:  # If the product doesn't have sizes, just add it normally
+    else:
         if str(item_id) in bag:
-            bag[str(item_id)] += quantity
-            messages.success(request, f'Updated quantity for "{product.name}" to {bag[str(item_id)]}')
+            if isinstance(bag[str(item_id)], int):  # If it's an integer (no size)
+                bag[str(item_id)] += quantity
+                messages.success(request, f'Updated quantity for "{product.name}" to {bag[str(item_id)]}')
+            elif isinstance(bag[str(item_id)], dict):
+                pass
         else:
             bag[str(item_id)] = quantity
             messages.success(request, f'Added "{product.name}" to your bag')
@@ -53,6 +60,36 @@ def add_to_bag(request, item_id):
 
     return redirect(redirect_url or 'storefront')
 
+
+def adjust_bag(request, item_id):
+    """ Adjust the quantity of the specified product to the specified amount """
+    quantity = int(request.POST.get('quantity'))
+    size = request.POST.get('product_size', None)
+    bag = request.session.get('bag', {})
+
+    if str(item_id) in bag:
+        if size:  # Handling for products with sizes
+            if 'items_by_size' in bag[str(item_id)]:
+                if quantity > 0:
+                    bag[str(item_id)]['items_by_size'][size] = quantity
+                else:
+                    del bag[str(item_id)]['items_by_size'][size]
+                    if not bag[str(item_id)]['items_by_size']:
+                        del bag[str(item_id)]
+            else:
+                # Handle case where the product doesn't have 'items_by_size'
+                if quantity > 0:
+                    bag[str(item_id)] = {'items_by_size': {size: quantity}}
+                else:
+                    del bag[str(item_id)]
+        else:  # Handling for products without sizes
+            if quantity > 0:
+                bag[str(item_id)] = quantity
+            else:
+                del bag[str(item_id)]
+
+    request.session['bag'] = bag
+    return redirect(reverse('shopping_bag'))
 
 
 
