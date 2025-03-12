@@ -73,5 +73,16 @@ class ShoppingBagTests(TestCase):
         # Check if the quantity was updated
         bag = self.client.session.get('bag', {})
         self.assertEqual(bag[str(self.product_without_size.id)], 5)
+    
+    def test_bag_with_multiple_sizes(self):
+        """ Test adding multiple sizes of the same product to the bag """
+        self.add_product_to_bag(self.product_with_size, quantity=1, size="M")
+        self.add_product_to_bag(self.product_with_size, quantity=1, size="L")
+        
+        bag = self.client.session.get('bag', {})
+        self.assertIn(str(self.product_with_size.id), bag)
+        self.assertEqual(len(bag[str(self.product_with_size.id)]["items_by_size"]), 2)
+        self.assertEqual(bag[str(self.product_with_size.id)]["items_by_size"]["M"], 1)
+        self.assertEqual(bag[str(self.product_with_size.id)]["items_by_size"]["L"], 1)
 
 
