@@ -23,7 +23,7 @@ footer {
     position: relative;
     bottom: 0;
     left: 0;
-    z-index: 1000; /* Ensure footer is at the bottom */
+    z-index: auto; /* Ensure footer is at the bottom */
     margin-top: auto; /* Push footer to the bottom if content is short */
 }
 
@@ -118,21 +118,76 @@ footer {
 }
 
 .overlay {
-    background-color: white;
+    background-color: grey;
 }
 
 #product-h1 {
     color: white;
-    margin-top: 3.5rem;
-    background-color: darkslategray;
+    background-color: black 0.4;
     text-transform: uppercase;
     text-decoration: underline;
+    padding: 10px;
 }
 
 #product-row {
     padding: 20px;
 }
 
+#cat-button {
+    padding: 5px;
+}
+
+.btn-outline-primary {
+    color: white;
+    background-color: transparent;
+    background-image: none;
+    border-color: #007bff;
+}
+
+.btn-outline-primary:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+    transform: rotate(10deg);
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.7);
+    text-shadow: 0 0 10px rgba(0, 123, 255, 0.7);
+}
+
+#product-menu {
+    background-color: black;
+}
+
+.alert-warning {
+    margin: 10px;
+}
+
+.product-item {
+    transition: transform 0.5s ease-in-out, box-shadow 0.4s ease-in-out;
+
+}
+
+.product-item:hover {
+    transform: scale(1.05) rotateX(5deg) rotateY(5deg);
+    
+}
+
+#backToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    display: none;  /* Initially hidden */
+}
+
+.top-button {
+    background-color:rgba(255, 255, 255, 0.5);
+}
+
+.blockbody {
+    background-color: white;
+}
 
 @media screen and (min-width: 280px) {
     .navbar {
