@@ -59,7 +59,7 @@
                                             <button type="submit" class="btn btn-primary btn-sm mt-2">Update Quantity</button>
                                         </form>
                                         
-                                        <p class="card-text"><strong>Subtotal: </strong>${{ item.total_price|floatformat:2 }}</p>
+                                        <p class="card-text" id="spaceout"><strong>Subtotal: </strong>${{ item.total_price|floatformat:2 }}</p>
 
                                         <!-- Form for removing the item -->
                                         <form action="{% url 'remove_from_bag' item.product.id %}" method="post">
@@ -67,7 +67,7 @@
                                             {% if item.product.sizes %}
                                                 <input type="hidden" name="product_size" value="{{ item.size }}">
                                             {% endif %}
-                                            <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                                            <button type="submit" class="btn btn-danger btn-sm w-100">Remove</button>
                                         </form>
                                     </div>
                                 </div>

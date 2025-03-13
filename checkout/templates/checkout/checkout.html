@@ -40,7 +40,7 @@
                         <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
                     </div>
                     <div class="col-3 text-right">
-                        <p class="my-0 small text-muted">${{ item.product.price|floatformat:2 }}</p>
+                        <p class="my-0 small text-muted">${{ item.total_price|floatformat:2 }}</p>
                     </div>
                 </div>
             {% endfor %}
