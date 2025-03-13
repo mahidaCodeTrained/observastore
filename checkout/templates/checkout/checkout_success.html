@@ -16,19 +16,30 @@
 {% endif %}
 
 <div class="container-fluid azurebody">
-    <div class="row justify-content-center">
-        <div class="col-md-8 text-center">
+    <div class="row justify-content-center align-items-center">
+        <!-- Left Image -->
+        <div class="col-12 col-md-4 text-center">
+            <img src="/static/image/moon-3568836_1280.jpg" class="img-fluid rounded" alt="Thank You Left" />
+        </div>
+
+        <!-- Main Content (Thank You Message) -->
+        <div class="col-12 col-md-4 text-center">
             <h2 class="logo-font mb-4">Thank You</h2>
             <p class="text-black lead">Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong>.</p>
             <hr class="my-4">
 
             <div class="row justify-content-center">
                 <div class="col-12">
-                    <a href="{% url 'storefront' %}" class="btn btn-dark btn-lg btn-block my-2 w-100">
-                        <i class="fas fa-gifts mr-2"></i> Check what else Observastore has to offer!
+                    <a href="{% url 'storefront' %}" class="btn custom-btn my-3">
+                        <i class="fas fa-gifts mr-2"></i> Shop More!
                     </a>
                 </div>
             </div>
+        </div>
+
+        <!-- Right Image -->
+        <div class="col-12 col-md-4 text-center">
+            <img src="/static/image/moon-8267178_1280.jpg" class="img-fluid rounded" alt="Thank You Right" />
         </div>
     </div>
 </div>
