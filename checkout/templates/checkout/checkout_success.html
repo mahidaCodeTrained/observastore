@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+
+{% if messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {% for message in messages %}
+            <span class="d-block">{{ message }}</span>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<div class="container-fluid azurebody">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h2 class="logo-font mb-4">Thank You</h2>
+            <p class="text-black lead">Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong>.</p>
+            <hr class="my-4">
+
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <a href="{% url 'storefront' %}" class="btn btn-dark btn-lg btn-block my-2 w-100">
+                        <i class="fas fa-gifts mr-2"></i> Check what else Observastore has to offer!
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
