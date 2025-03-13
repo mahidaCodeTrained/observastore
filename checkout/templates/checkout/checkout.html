@@ -6,7 +6,7 @@
     <div class="row mt-5">
         <div class="col">
             <hr>
-            <h2 class="logo-font mb-4">Shopping Bag</h2>
+            <h2 class="logo-font mb-4">Checkout</h2>
             <hr>
         </div>
     </div>
@@ -28,9 +28,9 @@
                     <div class="col-2">
                         <a href="{% url 'product_details' item.product.id %}">
                             {% if item.product.image %}
-                                <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}">
+                                <img class="w-100" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
                             {% else %}
-                                <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
                             {% endif %}
                         </a>
                     </div>
@@ -38,6 +38,7 @@
                         <p class="my-0"><strong>{{ item.product.name }}</strong></p>
                         <p class="my-0 small">Size: {% if item.product.sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
                         <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
+                        <p class="my-0 small text-muted">Price: ${{ item.product.price|floatformat:2 }}</p>
                     </div>
                     <div class="col-3 text-right">
                         <p class="my-0 small text-muted">${{ item.total_price|floatformat:2 }}</p>
@@ -122,3 +123,5 @@
     </div>
 </div>
 {% endblock %}
+
+
