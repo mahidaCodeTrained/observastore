@@ -189,6 +189,30 @@ footer {
     background-color: white;
 }
 
+#smallfont {
+    font-size: smaller;
+}
+
+#spaceout {
+    padding: 10px;
+}
+
+.azurebody {
+    background-color: azure;
+
+}
+
+#payment-form .form-control {
+    color: black;
+    border: 0.5px solid black;
+}
+
+.text-info {
+    color: blue !important;
+}
+
+
+
 @media screen and (min-width: 280px) {
     .navbar {
         padding: .5rem 1rem;
