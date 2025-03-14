@@ -40,13 +40,18 @@ def bag_contents(request):
 
     # Calculate delivery and grand total
     if total < settings.FREE_DELIVERY_THRESHOLD:
-        delivery = (total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
-        free_delivery_delta = (settings.FREE_DELIVERY_THRESHOLD - total).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
+        delivery = (total * Decimal(
+            settings.STANDARD_DELIVERY_PERCENTAGE / 100)).quantize(
+                Decimal('0.01'), rounding=ROUND_HALF_UP)
+        free_delivery_delta = (
+            settings.FREE_DELIVERY_THRESHOLD - total).quantize(
+                Decimal('0.01'), rounding=ROUND_HALF_UP)
     else:
         delivery = Decimal('0.00')
         free_delivery_delta = Decimal('0.00')
 
-    grand_total = (total + delivery).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
+    grand_total = (total + delivery).quantize(
+        Decimal('0.01'), rounding=ROUND_HALF_UP)
 
     context = {
         'bag_items': bag_items,
@@ -59,6 +64,3 @@ def bag_contents(request):
     }
 
     return context
-
-
-

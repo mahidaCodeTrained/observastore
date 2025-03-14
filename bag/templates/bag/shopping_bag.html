@@ -2,6 +2,14 @@
 {% load static %}
 
 {% block content %}
+{% if messages %}
+            <div class="alert alert-warning" role="alert">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        {% endif %}
+
     <div class="blockbody"></div>
     <div class="container blockbody">
         <div class="row">
@@ -121,13 +129,6 @@
                     </a>
                 {% endif %}
 
-                {% if messages %}
-            <div class="alert alert-warning" role="alert">
-                {% for message in messages %}
-                    {{ message }}
-                {% endfor %}
-            </div>
-        {% endif %}
             </div>
         </div>
     </div>
