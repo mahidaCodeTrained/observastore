@@ -86,7 +86,7 @@ hr.my-4 {
   font-size: 18px;
   padding: 14px 24px;
   border-radius: 50px; /* Rounded corners */
-  background-color: #ff6f61; /* Warm color */
+  background-color: blue; /* Warm color */
   color: #fff;
   font-weight: 700;
   text-transform: uppercase;
@@ -96,7 +96,7 @@ hr.my-4 {
 
 /* Hover effect */
 .custom-btn:hover {
-  background-color: #ff3b2f; /* Darker shade of the button */
+  background-color: green; /* Darker shade of the button */
   transform: scale(1.05); /* Slight scaling effect */
 }
 
@@ -113,6 +113,34 @@ hr.my-4 {
 .custom-btn:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.7);
+}
+
+.order-image {
+  max-width: 100%; /* Ensures images are fully responsive */
+  height: auto; /* Prevents distortion */
+  max-height: 300px; /* Limits height on larger screens */
+  object-fit: cover; /* Keeps aspect ratio */
+}
+
+/* Order Summary Styling */
+.order-summary {
+  padding: 20px; /* Adds spacing around the content */
+  margin-bottom: 20px; /* Extra space below */
+  background-color: #f8f9fa; /* Light gray background */
+  border-radius: 10px; /* Soft rounded edges */
+}
+
+.order-summary h4, 
+.order-summary h5 {
+  margin-bottom: 15px; /* More space below headings */
+}
+
+.order-summary p {
+  margin-bottom: 10px; /* Space between paragraphs */
+}
+
+hr {
+  border-top: 2px solid #ddd; /* Makes lines more visible */
 }
 
 /* Responsive adjustments */
