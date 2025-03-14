@@ -16,32 +16,80 @@
 {% endif %}
 
 <div class="container-fluid azurebody">
-    <div class="row justify-content-center align-items-center">
-        <!-- Left Image -->
-        <div class="col-12 col-md-4 text-center">
-            <img src="/static/image/moon-3568836_1280.jpg" class="img-fluid rounded" alt="Thank You Left" />
+    <div class="row justify-content-center">
+
+        <div class="col-12 text-center mb-3">
+            <img src="{% static 'image/fireworks.jpg' %}" class="img-fluid rounded order-image" alt="Thank You Image" />
         </div>
 
-        <!-- Main Content (Thank You Message) -->
-        <div class="col-12 col-md-4 text-center">
-            <h2 class="logo-font mb-4">Thank You</h2>
-            <p class="text-black lead">Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong>.</p>
-            <hr class="my-4">
+        <div class="col-12 col-md-8">
+            <div class="card shadow-lg p-4">
+                <div class="card-body text-center">
+                    <h2 class="logo-font mb-4">Thank You</h2>
+                    <p class="text-black lead">
+                        Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong>.
+                    </p>
+                    <hr class="my-4">
 
-            <div class="row justify-content-center">
-                <div class="col-12">
-                    <a href="{% url 'storefront' %}" class="btn custom-btn my-3">
-                        <i class="fas fa-gifts mr-2"></i> Shop More!
-                    </a>
+                    <div class="order-summary text-left">
+                        <h4>Order Summary</h4>
+                        <p><strong>Order Number:</strong> {{ order.order_number }}</p>
+                        <p><strong>Order Date:</strong> {{ order.date|date:"F j, Y, g:i a" }}</p>
+                        <h5 class="mt-3">Items Purchased</h5>
+                        <ul class="list-group mb-3">
+                            {% for item in order.lineitems.all %}
+                                <li class="list-group-item">
+                                    {{ item.product.name }} {% if item.product_size %} (Size: {{ item.product_size }}) {% endif %}
+                                    <br>
+                                    <strong>Quantity:</strong> {{ item.quantity }} | <strong>Subtotal:</strong> &pound;{{ item.lineitem_total }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+
+                        <hr class="my-3">
+
+                        <h5 class="mt-3"> Payee Information</h5>
+                        <p><strong>Name:</strong> {{ order.full_name }}</p>
+                        <p><strong>Email:</strong> {{ order.email }}</p>
+                        <p><strong>Phone:</strong> {{ order.phone_number }}</p>
+
+                        <hr class="my-3">
+
+                        <h5 class="mt-3">Delivery Address</h5>
+                        <p>{{ order.street_address1 }}</p>
+                        {% if order.street_address2 %}<p>{{ order.street_address2 }}</p>{% endif %}
+                        <p>{{ order.town_or_city }}, {{ order.county }}, {{ order.postcode }}</p>
+                        <p>{{ order.country }}</p>
+
+                        <hr class="my-3">
+
+                        <h5 class="mt-3">Order Summary</h5>
+                        <p><strong>Order Total:</strong> &pound;{{ order.order_total }}</p>
+                        <p><strong>Delivery Cost:</strong> &pound;{{ order.delivery_cost }}</p>
+                        <p class="font-weight-bold"><strong>Grand Total:</strong> &pound;{{ order.grand_total }}</p>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <a href="{% url 'storefront' %}" class="btn btn-primary my-3">
+                                <i class="fas fa-gifts mr-2"></i> Shop More!
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Right Image -->
-        <div class="col-12 col-md-4 text-center">
-            <img src="/static/image/moon-8267178_1280.jpg" class="img-fluid rounded" alt="Thank You Right" />
+        <div class="col-12 text-center mt-3">
+            <img src="{% static 'image/fireworks.jpg' %}" class="img-fluid rounded order-image" alt="Thank You Image" />
         </div>
     </div>
+</div>
+
+<div class="text-center">
+    <button id="backToTop" class="top-button" style="display: none;">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 </div>
 
 {% endblock %}
