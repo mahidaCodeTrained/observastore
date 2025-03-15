@@ -1,21 +1,30 @@
 {% extends "account/base.html" %}
+{% load static %}
 
 {% load i18n %}
 
 {% block head_title %}{% trans "Sign Out" %}{% endblock head_title %}
 
 {% block content %}
-<h1>{% trans "Sign Out" %}</h1>
 
-<p>{% trans 'Are you sure you want to sign out?' %}</p>
+<div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 100vh; background: linear-gradient(45deg, #212121, #424242);">
+    <div class="card shadow-lg" style="max-width: 400px; width: 100%; background-color: rgba(33, 33, 33, 0.8); border-radius: 15px;">
+        <div class="card-body">
+            <h1 class="text-center text-white mb-4">{% trans "Sign Out" %}</h1>
 
-<form method="post" action="{% url 'account_logout' %}">
-  {% csrf_token %}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-  {% endif %}
-  <button type="submit">{% trans 'Sign Out' %}</button>
-</form>
+            <p class="text-center text-white mb-4">{% trans 'Are you sure you want to sign out?' %}</p>
 
-
+            <form method="post" action="{% url 'account_logout' %}">
+                {% csrf_token %}
+                {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                {% endif %}
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-danger w-100 custom-button">{% trans 'Sign Out' %}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock content %}
+

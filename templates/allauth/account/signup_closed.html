@@ -5,7 +5,14 @@
 {% block head_title %}{% trans "Sign Up Closed" %}{% endblock head_title %}
 
 {% block content %}
-<h1>{% trans "Sign Up Closed" %}</h1>
-
-<p>{% trans "We are sorry, but the sign up is currently closed." %}</p>
+<!-- Fullscreen Fluid Container with Gradient Background -->
+<div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 100vh; background: linear-gradient(45deg, #212121, #424242);">
+    <div class="card shadow-lg" style="max-width: 600px; width: 100%; background-color: rgba(33, 33, 33, 0.8); border-radius: 15px;">
+        <div class="card-body">
+            <h1 class="text-center text-white mb-4">{% trans "Sign Up Closed" %}</h1>
+            <p class="text-center text-white mb-4">{% trans "We are sorry, but the sign up is currently closed." %}</p>
+        </div>
+    </div>
+</div>
 {% endblock content %}
+

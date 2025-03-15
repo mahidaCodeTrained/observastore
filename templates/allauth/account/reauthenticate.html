@@ -5,18 +5,24 @@
 {% block head_title %}{% trans "Confirm Access" %}{% endblock head_title %}
 
 {% block content %}
+<!-- Fullscreen Fluid Container with Gradient Background -->
+<div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 100vh; background: linear-gradient(45deg, #212121, #424242);">
+    <div class="card shadow-lg" style="max-width: 600px; width: 100%; background-color: rgba(33, 33, 33, 0.8); border-radius: 15px;">
+        <div class="card-body">
+            <h1 class="text-center text-white mb-4">{% trans "Confirm Access" %}</h1>
 
-<h1>{% trans "Confirm Access" %}</h1>
+            <p class="text-center text-white mb-4">{% blocktranslate %}To safeguard the security of your account, please enter your password:{% endblocktranslate %}</p>
 
-<p>{% blocktranslate %}To safeguard the security of your account, please enter your password:{% endblocktranslate %}</p>
-
-<form class="reauthenticate" method="POST" action="{% url 'account_reauthenticate' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button type="submit">{% trans "Confirm" %}</button>
-</form>
-
+            <form class="reauthenticate" method="POST" action="{% url 'account_reauthenticate' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <button type="submit" class="btn btn-primary btn-block mt-4">{% trans "Confirm" %}</button>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock content %}
+
