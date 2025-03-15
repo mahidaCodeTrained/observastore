@@ -1,13 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Frequently Asked Questions</h1>
-  <div class="faq-list">
+   <div class="container-fluid blockbody">
+  <h1 class="text-center">Frequently Asked Questions</h1>  <!-- Centered header -->
+
+  <div class="faq-list d-flex flex-column align-items-center">  <!-- Center the FAQ list and stack them vertically -->
     {% for faq in faqs %}
-      <div class="faq-item">
-        <h2>{{ faq.question }}</h2>
-        <p>{{ faq.answer }}</p>
+      <div class="faq-item card my-3" style="width: 100%; max-width: 500px;">  <!-- Set max width for the cards -->
+        <div class="card-header">
+          <h2 class="faq-question mb-0" data-toggle="collapse" data-target="#faq-answer{{ faq.id }}" aria-expanded="false" aria-controls="faq-answer{{ faq.id }}">
+            {{ faq.question }}
+          </h2>
+        </div>
+        <div id="faq-answer{{ faq.id }}" class="collapse faq-answer">
+          <p>{{ faq.answer }}</p>
+        </div>
       </div>
     {% endfor %}
   </div>
+</div>
 {% endblock %}
+
+
+
+

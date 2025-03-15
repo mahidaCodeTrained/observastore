@@ -45,11 +45,17 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'about' %}">About</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Reviews</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="contactDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Contact
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="contactDropdown">
+                                <a class="dropdown-item" href="{}">Contact</a>
+                                <a class="dropdown-item" href="{% url 'faq_list' %}">FAQ</a>
+                            </div>
                         </li>
     
-                        <!-- New "All Products" Dropdown -->
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="allProductsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Our Products
@@ -60,23 +66,6 @@
                                 <a class="dropdown-item" href="{% url 'storefront' %}?category=Globes">Globes</a>
                                 <a class="dropdown-item" href="{% url 'storefront' %}?category=T-Shirts">T-Shirts</a>
                                 <a class="dropdown-item" href="{% url 'storefront' %}">All Products</a>
-                            </div>
-                        </li>
-    
-                        <!-- Goods Dropdown -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="goodsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Goods Filter
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="goodsDropdown">
-                                <h6 class="dropdown-header">Sort by:</h6>
-                                <a class="dropdown-item" href="{% url 'storefront' %}?sort=price_asc">By Price: Low to High</a>
-                                <a class="dropdown-item" href="{% url 'storefront' %}?sort=price_desc">By Price: High to Low</a>
-                                <a class="dropdown-item" href="{% url 'storefront' %}?sort=weight_asc">By Weight: Low to High</a>
-                                <a class="dropdown-item" href="{% url 'storefront' %}?sort=weight_desc">By Weight: High to Low</a>
-                                <!-- Alphabetical Order Filters -->
-                                <a class="dropdown-item" href="{% url 'storefront' %}?alphabetical=asc">Alphabetical A-Z</a>
-                                <a class="dropdown-item" href="{% url 'storefront' %}?alphabetical=desc">Alphabetical Z-A</a>
                             </div>
                         </li>
     
