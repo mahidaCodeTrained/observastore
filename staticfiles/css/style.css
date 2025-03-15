@@ -15,8 +15,8 @@ body {
 }
 
 footer {
-    background-color: silver;
-    color: black;
+    background-color: black;
+    color: white;
     text-align: center;
     padding: 10px 0;
     width: 100%;
@@ -211,7 +211,50 @@ footer {
     color: blue !important;
 }
 
+.custom-button {
+    background-color: blue;
+    border: none;
+    border-radius: 25px;
+    padding: 10px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
 
+.custom-button:hover {
+    background-color: green;
+    box-shadow: 0 4px 10px rgba(17, 4, 1, 0.7);
+    transform: scale(1.05);
+}
+
+.custom-button:focus {
+    outline: none;
+    box-shadow: 0 0 5px 2px rgba(17, 4, 1, 0.7);
+}
+
+.socialaccount_providers li {
+    margin-bottom: 15px;
+}
+
+.login-or {
+    font-size: 1.2rem;
+}
+
+.card {
+    border-radius: 15px;
+}
+
+.card-body {
+    padding: 30px;
+}
+
+.login label {
+    color: white;
+}
+
+/* Add subtle glowing effect to card */
+.card {
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
 
 @media screen and (min-width: 280px) {
     .navbar {
