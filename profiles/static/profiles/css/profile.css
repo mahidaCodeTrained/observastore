@@ -14,3 +14,66 @@
 #id_default_country option:first-child {
     color: #aab7c4;
 }
+
+/* Order History Section Styling */
+.order-history-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    overflow-x: auto;
+}
+
+.order-history h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 0;
+    font-size: 0.875rem;
+    color: #555;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.table th {
+    font-weight: 600;
+    background-color: #e9ecef;
+}
+
+.table td {
+    background-color: #ffffff;
+    border-top: 1px solid #ddd;
+}
+
+.table a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.table a:hover {
+    text-decoration: underline;
+}
+
+.table .list-unstyled {
+    margin-bottom: 0;
+}
+
+.table .small {
+    font-size: 0.75rem;
+}
+
+.table-responsive {
+    margin-bottom: 1.5rem;
+}
