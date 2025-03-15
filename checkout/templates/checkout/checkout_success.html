@@ -56,10 +56,10 @@
                         <hr class="my-3">
 
                         <h5 class="mt-3">Delivery Address</h5>
-                        <p>{{ order.street_address1 }}</p>
-                        {% if order.street_address2 %}<p>{{ order.street_address2 }}</p>{% endif %}
-                        <p>{{ order.town_or_city }}, {{ order.county }}, {{ order.postcode }}</p>
-                        <p>{{ order.country }}</p>
+                        <p><strong>Street Address 1:</strong> {{ order.street_address1 }}</p>
+                        {% if order.street_address2 %}<p><strong>Street Address 2: </strong> {{ order.street_address2 }}</p>{% endif %}
+                        <p><strong>Town, City or Postcode: </strong>{{ order.town_or_city }}, {{ order.county }}, {{ order.postcode }}</p>
+                        <p><strong>Country: </strong> {{ order.country }}</p>
 
                         <hr class="my-3">
 
@@ -71,9 +71,15 @@
 
                     <div class="row justify-content-center">
                         <div class="col-12">
+                            {% if from_profile %}
+                            <a href="{% url 'profile' %}" class="btn btn-primary my-3">
+                                <i class="fas fa-gifts mr-2"></i> Back to Profile
+                            </a>
+                            {% else %}
                             <a href="{% url 'storefront' %}" class="btn btn-primary my-3">
                                 <i class="fas fa-gifts mr-2"></i> Shop More!
                             </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
