@@ -13,7 +13,6 @@
 
         <div class="text-center" id="product-menu">
             <h1 class="text-center" id="product-h1">Storefront</h1>
-
             <!-- Category Filter Buttons -->
             <div class="text-center mb-4" id="cat-button">
                 <a href="{% url 'storefront' %}?category=Telescopes{% if sort_by %}&sort={{ sort_by }}{% endif %}" class="btn btn-outline-primary mx-2 {% if 'Telescopes' in current_categories %}active{% endif %}">Telescopes</a>
