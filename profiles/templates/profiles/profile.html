@@ -1,8 +1,50 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
 
 {% block content %}
-<div class="container azurebody">
-    <h1>HELLO WELCOME TO PROFILE</h1>
-   {{ profile }}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {% for message in messages %}
+        <span class="d-block">{{ message }}</span>
+    {% endfor %}
 </div>
+    <div class="container-fluid blockbody">
+        <div class="row">
+            <div class="col-12">
+                <hr class="my-4">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-6 mb-4">
+                <h2 class="h5 text-muted">Your Delivery Information</h2>
+                <div class="profile-form-container">
+                    <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button type="submit" class="btn btn-dark btn-lg mt-3 float-end">Update Information</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 mb-4">
+                <h2 class="h5 text-muted">Order History</h2>
+                <div class="order-history-container">
+                    {{ orders }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <button id="backToTop" class="top-button" style="display: none;">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
 {% endblock %}
