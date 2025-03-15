@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'storefront',
     'bag',
     'checkout',
+    'django_countries',
 
     # For Crsipy Forms
     'crispy_forms',

@@ -162,6 +162,16 @@ hr {
     height: 100%;
 }
 
+select, 
+select option {
+    color: #000000;
+}
+
+select:invalid,
+select option[value=""] {
+    color: #aab7c4 !important;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   h2.logo-font {
