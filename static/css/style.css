@@ -299,6 +299,10 @@ footer {
     padding: 10px;
   }
 
+  .fontsmaller {
+    font-size: 12px;
+  }
+
 @media screen and (min-width: 280px) {
     .navbar {
         padding: .5rem 1rem;
