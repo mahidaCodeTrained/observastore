@@ -3,6 +3,8 @@ from django.contrib import messages
 from django.db.models import Q
 from .models import StoreGoods, Category
 
+from .forms import StoreForm
+
 
 def view_store_goods(request):
     """This view is designed to show the products that Observastore will sell."""
@@ -65,3 +67,23 @@ def detailed_products(request, product_id):
 
     return render(request, 'storefront/product_details.html', context)
 
+
+def add_product(request):
+    if request.method == 'POST':
+        form = StoreForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Successfully added your new product!")
+            return redirect(reverse('add_product'))
+        else:
+            messages.error(
+                request, "Failed to add your new product please check \
+                that the form is valid")
+    else:
+        form = StoreForm()
+    template = 'storefront/add_product.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
