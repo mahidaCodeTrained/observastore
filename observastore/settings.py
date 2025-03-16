@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'checkout',
     'profiles',
     'faq',
+    'contact',
     'django_countries',
 
     # For Crsipy Forms

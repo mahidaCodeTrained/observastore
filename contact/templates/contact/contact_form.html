@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if messages %}
+    <div class="alert alert-warning" role="alert">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="card w-100 col-md-8 col-lg-6 shadow-lg">
+        <div class="card-header text-center">
+            <h2>Contact Us</h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="{% url 'contact_form' %}">
+                {% csrf_token %}
+                
+                <div class="mb-3">
+                    <label for="id_name" class="form-label">Your Name</label>
+                    {{ form.name }}
+                </div>
+                
+                <div class="mb-3">
+                    <label for="id_email" class="form-label">Email Address</label>
+                    {{ form.email }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_store_good" class="form-label">Product (Optional)</label>
+                    {{ form.store_good }}
+                </div>
+                
+                <div class="mb-3">
+                    <label for="id_message" class="form-label">Message</label>
+                    {{ form.message }}
+                </div>
+                
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+  <button id="backToTop" class="top-button" style="display: none;">
+      <i class="fas fa-arrow-up"></i>
+  </button>
+</div>
+{% endblock %}
+
+
+
