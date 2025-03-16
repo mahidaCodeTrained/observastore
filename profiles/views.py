@@ -18,7 +18,8 @@ def profile(request):
             messages.success(request, 'Profile updated successfully')
 
     form = UserProfileForm(instance=profile)
-    orders = profile.orders.all()
+    # Ordering the orders by the date in descending order
+    orders = profile.orders.all().order_by('-date')
 
     template = 'profiles/profile.html'
     context = {
