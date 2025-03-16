@@ -303,6 +303,15 @@ footer {
     font-size: 12px;
   }
 
+  .darkbody {
+    background-color: black;
+  }
+
+  .whitefaq {
+    color: white;
+    padding: 10px;
+  }
+
 @media screen and (min-width: 280px) {
     .navbar {
         padding: .5rem 1rem;
