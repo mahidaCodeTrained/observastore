@@ -256,6 +256,62 @@ footer {
     animation: glow 1.5s ease-in-out infinite alternate;
 }
 
+.faq-item {
+    border: 1px solid #ddd;  /* Add a light border around each FAQ card */
+    border-radius: 8px;  /* Rounded corners for the cards */
+  }
+  
+  .faq-question {
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .faq-question:hover {
+    color: #007bff;  /* Change color on hover for better interaction */
+  }
+  
+  /* Specific styling for the collapsible answer section */
+  .faq-answer {
+    padding: 1rem;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #ddd;  /* Add a border above the answer */
+  }
+  
+  .faq-answer {
+    transition: height 0.3s ease-out;
+    overflow: hidden;
+  }
+  
+  .collapse.show .faq-answer {
+    max-height: 500px; /* Adjust to your desired maximum height */
+  }
+  
+  .collapse:not(.show) .faq-answer {
+    max-height: 0;
+  }
+
+  .management {
+    background-color: black;
+    color: white;
+    padding: 10px;
+  }
+
+  .fontsmaller {
+    font-size: 12px;
+  }
+
+  .darkbody {
+    background-color: black;
+  }
+
+  .whitefaq {
+    color: white;
+    padding: 10px;
+  }
+
 @media screen and (min-width: 280px) {
     .navbar {
         padding: .5rem 1rem;
