@@ -293,6 +293,12 @@ footer {
     max-height: 0;
   }
 
+  .management {
+    background-color: black;
+    color: white;
+    padding: 10px;
+  }
+
 @media screen and (min-width: 280px) {
     .navbar {
         padding: .5rem 1rem;
