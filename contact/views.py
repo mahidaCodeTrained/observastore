@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from .forms import ContactRequestForm
-from django.template import TemplateDoesNotExist  # Add this import
+from django.template import TemplateDoesNotExist
 
 
 def contact_view(request):
