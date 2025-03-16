@@ -16,8 +16,12 @@ def profile(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Profile updated successfully')
-
-    form = UserProfileForm(instance=profile)
+        else:
+            messages.error(
+                request, "Update has failed, please ensure that you \
+                      have submitted the form correctly.")
+    else:
+        form = UserProfileForm(instance=profile)
     # Ordering the orders by the date in descending order
     orders = profile.orders.all().order_by('-date')
 

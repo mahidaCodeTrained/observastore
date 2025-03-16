@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {% for message in messages %}
+        <span class="d-block">{{ message }}</span>
+    {% endfor %}
+</div>
+
+<h1 class="text-center management">Product Management</h1>
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh; margin-top: 10px;">
+    <div class="card w-100 col-md-8 col-lg-6 shadow-lg border-0 rounded-3">
+        <div class="card-header bg-dark text-white text-center py-4" style="border-top-left-radius: 20px; border-top-right-radius: 20px;">
+            <h2 class="">Add a New Product</h2>
+        </div>
+        <div class="card-body p-5">
+            <form method="POST" action="{% url 'add_product' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <div class="mb-4">
+                    <label for="id_name" class="form-label">Product Name</label>
+                    {{ form.name }}
+                    {% if form.name.errors %}
+                        <div class="text-danger">
+                            {% for error in form.name.errors %}
+                                <span class="d-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-4">
+                    <label for="id_description" class="form-label">Description</label>
+                    {{ form.description }}
+                    {% if form.description.errors %}
+                        <div class="text-danger">
+                            {% for error in form.description.errors %}
+                                <span class="d-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-4">
+                    <label for="id_price" class="form-label">Price</label>
+                    {{ form.price }}
+                    {% if form.price.errors %}
+                        <div class="text-danger">
+                            {% for error in form.price.errors %}
+                                <span class="d-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-4">
+                    <label for="id_sizes" class="form-label">Sizes Available</label>
+                    {{ form.sizes }}
+                    {% if form.sizes.errors %}
+                        <div class="text-danger">
+                            {% for error in form.sizes.errors %}
+                                <span class="d-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-4">
+                    <label for="id_weight" class="form-label">Weight</label>
+                    {{ form.weight }}
+                    {% if form.weight.errors %}
+                        <div class="text-danger">
+                            {% for error in form.weight.errors %}
+                                <span class="d-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-4">
+                    <label for="id_image" class="form-label">Product Image</label>
+                    {{ form.image }}
+                    {% if form.image.errors %}
+                        <div class="text-danger">
+                            {% for error in form.image.errors %}
+                                <span class="d-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-4">
+                    <label for="id_category" class="form-label">Category</label>
+                    {{ form.category }}
+                    {% if form.category.errors %}
+                        <div class="text-danger">
+                            {% for error in form.category.errors %}
+                                <span class="d-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="btn btn-success w-100 mt-4">Add Product</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
