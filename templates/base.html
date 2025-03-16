@@ -13,6 +13,8 @@
     <!-- Custom CSS from style.css file -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Link for Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
     {% block extra_css %}
     {% endblock %}
 </head>
@@ -145,9 +147,31 @@
         {% endblock %}
     </div>
 
-    <footer class="text-center py-3">
-        <p>&copy; 2025 Observastore. All Rights Reserved.</p>
+    <footer class="text-center py-4">
+        <div class="container">
+            <form method="POST" action="{% url 'newsletter_subscribe' %}" class="form-inline justify-content-center">
+                {% csrf_token %}
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <label for="newsletter-email" class="sr-only">Subscribe to our Newsletter</label>
+                        <span class="font-weight-bold">Subscribe to our Newsletter</span>
+                    </div>
+                    <div class="col-auto">
+                        <input type="email" name="email" id="newsletter-email" class="form-control mb-2 mr-sm-2" placeholder="Enter your email" required>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-2">Subscribe</button>
+                    </div>
+                </div>
+            </form>
+            <p class="mt-3">&copy; 2025 Observastore. All Rights Reserved.</p>
+        </div>
     </footer>
+    <div class="text-center">
+        <button id="backToTop" class="top-button" style="display: none;">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+      </div>
 
     <!-- Bootstrap JS  -->
     <!-- Use the full jQuery version -->

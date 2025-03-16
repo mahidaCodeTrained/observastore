@@ -4,6 +4,13 @@
 {% load static %}
 
 {% block content %}
+{% if messages %}
+    <div class="alert alert-warning" role="alert">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
     <!-- Hero Section -->
     <section class="hero text-white text-center py-5" id="hero-img-section">
         <div class="container" id="hero-container">

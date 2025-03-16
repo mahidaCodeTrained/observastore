@@ -16,3 +16,9 @@ class ContactRequest(models.Model):
         store_good_title = self.store_good.name if self.store_good else "General Inquiry"
         return f"Request from {self.name} for {store_good_title}"
 
+
+class Newsletter(models.Model):
+    email = models.EmailField(unique=True)
+
+    def __str__(self):
+        return self.email

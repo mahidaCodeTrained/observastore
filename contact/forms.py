@@ -1,5 +1,5 @@
 from django import forms
-from .models import ContactRequest
+from .models import ContactRequest, Newsletter
 from storefront.models import StoreGoods  # Make sure to import the StoreGood model
 
 class ContactRequestForm(forms.ModelForm):
@@ -21,3 +21,9 @@ class ContactRequestForm(forms.ModelForm):
         empty_label="Select a product",  # Placeholder text
         widget=forms.Select(attrs={"class": "form-control"}),
     )
+
+
+class NewsletterForm(forms.ModelForm):
+    class Meta:
+        model = Newsletter
+        fields = ['email']
