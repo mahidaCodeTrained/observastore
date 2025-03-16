@@ -25,8 +25,8 @@
             <div class="row">
                 <div class="product-container col-10 offset-1">
                     <div class="row mt-1 mb-2">
-                        <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
-                            <div class="sort-select-wrapper w-50">
+                        <div class="col-12 col-md-6 my-auto order-md-last justify-content-center justify-content-md-end">
+                            <div class="sort-select-wrapper w-50 ml-auto">
                                 <form method="get" action="{% url 'storefront' %}" id="sortForm">
                                     {% if current_categories %}
                                         <input type="hidden" name="category" value="{{ current_categories.0.name }}">
@@ -54,7 +54,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
         {% if current_categories %}
@@ -68,11 +67,11 @@
 
         <div class="row justify-content-center">
             {% for product in products %}
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-3 d-flex justify-content-center">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-3 justify-content-center">
                     <a href="{% url 'product_details' product.id %}" class="text-decoration-none text-dark" style="width: 220px;">
-                        <div class="product-item border rounded shadow-sm p-2 text-center d-flex flex-column justify-content-between"
-                             style="background-color: rgba(255, 255, 255, 0.95); height: 260px; transition: transform 0.2s ease-in-out; position: relative;" id="product-{{ product.id }}">
-                             
+                        <div class="product-item border rounded shadow-sm p-2 text-center flex-column justify-content-between"
+                             style="background-color: rgba(255, 255, 255, 0.95); height: 300px; transition: transform 0.2s ease-in-out; position: relative;" id="product-{{ product.id }}">
+
                             <!-- Product Image -->
                             {% if product.image %}
                                 <img src="{{ product.image.url }}" alt="{{ product.name }}" 
@@ -89,6 +88,15 @@
 
                             <!-- Product Price -->
                             <p class="text-primary font-weight-bold mb-1">${{ product.price }}</p>
+
+                            <!-- Edit and Delete Links inside the card -->
+                            {% if user.is_superuser %}
+                                <div class="justify-content-center">
+                                    <a href="{% url 'edit_product' product.id %}" class="btn btn-warning btn-sm mx-1">Edit</a>
+                                    <a href="{% url 'delete_product' product.id %}" class="btn btn-danger btn-sm mx-1" 
+                                       onclick="return confirm('Are you sure you want to delete this product?')">Delete</a>
+                                </div>
+                            {% endif %}
                         </div>
                     </a>
                 </div>
@@ -103,7 +111,6 @@
             <i class="fas fa-arrow-up"></i>
         </button>
     </div>
-    
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -116,6 +123,9 @@
         });
     </script>
 {% endblock %}
+
+
+
 
 
 

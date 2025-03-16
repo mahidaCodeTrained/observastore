@@ -7,7 +7,7 @@ from .forms import StoreForm
 
 
 def view_store_goods(request):
-    """This view is designed to show the products that Observastore will sell."""
+    """This view is designed to show the products """
 
     # Get all products
     products = StoreGoods.objects.all()
@@ -30,7 +30,8 @@ def view_store_goods(request):
             if not query:
                 messages.error(request, "You didn't enter any search criteria!")
                 return redirect(reverse('storefront'))
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
             products = StoreGoods.objects.filter(queries)
 
         if sort_by == 'price_asc':
@@ -72,9 +73,9 @@ def add_product(request):
     if request.method == 'POST':
         form = StoreForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            product = form.save()
             messages.success(request, "Successfully added your new product!")
-            return redirect(reverse('add_product'))
+            return redirect(reverse('product_details', args=[product.id]))
         else:
             messages.error(
                 request, "Failed to add your new product please check \
@@ -87,3 +88,37 @@ def add_product(request):
     }
 
     return render(request, template, context)
+
+
+def edit_product(request, product_id):
+    """ Edit a product in the store """
+    product = get_object_or_404(StoreGoods, pk=product_id)
+    if request.method == 'POST':
+        form = StoreForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated product!')
+            return redirect(reverse('product_details', args=[product.id]))
+        else:
+            messages.error(request, 'Failed to update product. \
+                           Please ensure the form is valid.')
+    else:
+        form = StoreForm(instance=product)
+        messages.info(request, f'You are editing the\
+                       product called... {product.name}')
+
+    template = 'storefront/edit_product.html'
+    context = {
+        'form': form,
+        'product': product,
+    }
+
+    return render(request, template, context)
+
+
+def delete_product(request, product_id):
+    """ Delete a product from the store """
+    product = get_object_or_404(StoreGoods, pk=product_id)
+    product.delete()
+    messages.success(request, 'Product deleted!')
+    return redirect(reverse('storefront'))
