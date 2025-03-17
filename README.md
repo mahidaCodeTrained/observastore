@@ -193,6 +193,9 @@ Observastore caters to:
 - There is a newsletter built in custom made for this project. This newsletter has a subscribe button which will input their email input and send them a message that they have subscribed. The newsletter is a good way to access the targeted persons to remind them if any offers come about in the site or any reductions or updates to Observastore.
 
 - There is a Facebook Page created just for Observastore. [Facebook Page](https://www.facebook.com/people/Observastore/61574166363860/)
+![screenshot](/documentation/facebook2.png)
+![screenshot](/documentation/facebook1.png)
+
 
 
 ## Design 
@@ -295,6 +298,8 @@ Google Fonts was utilised for this project as there was a particular font I want
 | **Payment Features and Order History** | ![screenshot](/documentation/features/payment.png) ![screenshot](/documentation/features/orderhistory.png) | There is Stripe payment in place and also order history |
 | **Back To Top** | ![screenshot](/documentation/features/backtopto.png) | There is a button that is primed with JavaScript that allows the user to press it to return to the top of the page. |
 
+
+- There are many features for the user to enjoy at Observastore. These are they key ones that highlight the stylistic approach and also the interactability of the site.
 ### Future Features
 
 - Observastore seeks to go beyond in the future... there are more features that can be implemented that were in the pipeline but did not make the intial project. 
