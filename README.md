@@ -1,131 +1,63 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Observastore
 
-Welcome USER_NAME,
+Observastore is an online e-commerce site where aspiring astronomers and enjoyers of the great beyond of Space can gather to purchase the products tailor made to fit their needs whether it is a high end to budget telescope to observe the night skies or a custom globe built to detail planets or a designed t-shirt highlighting their love for space. Observastore is built to ensure that they have what they need when they come to purchase on the site.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+- The project is extensive this README.md file will go through the process of creating Observastore from the business models, development approaches, features, tools and technologies, testing and more. As shopping at Observastore wishes to unlock your eyes to observe the night skies we will observe just how this e-commerce project Observastore came to be.
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
+## Table of Contents
+<details>
 
-## Gitpod Reminders
+<summary>Click here for the Table of Contents</summary>
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+- [Agile Development](#agile-development)
+- [CRUD Functionality](#crud-functionality)
+- [Entity Relationship](#entity-relationship)
+- [Business Model](#business-model)
+- [Design](#design)
+- [Wireframes](#wireframes)
+- [Features](#features)
+- [User Stories](#user-stories)
+- [Pages](#pages)
+- [Tools & Technologies](#tools--technologies)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Credits](#credits)
+- [Acknowledgements](#acknowledgements)
 
-`python3 -m http.server`
+## CRUD Functionality
 
-A blue button should appear to click: _Make Public_,
+*CRUD* functionality has been implemented throughout the project from when the user wants to read an about page or read the FAQ's which are built in the backend and are being delivered to the frontend for the user to read. CRUD Functionality additionaly exists when a user would like to add a product into their shopping bag where they can update the quantity of that product... all while being able to delete the product from their bag if it no longer peeks their interest to purchase. It is paramount that CRUD functionality was at the forefront of development for this project. The site user must be able to interact with a site to keep them engaged. This is why there are many options for users to submit forms for newsletters, profile or for a contact request. The CRUD functionality also exists for the superuser admin. 
 
-Another blue button should appear to click: _Open Browser_.
+Admin (Superuser only)
+- *C*: Create new users, products, FAQ'S, about page statements.
+- *R*: Read all of the entries in form data in the django admin.
+- *U*: Update products and also update their quantity.
+- *D*: Delete products, users.
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+Dashboard (Site Users)
+- *C*: Create their own shopping bag by adding products into it for purchase
+- *R*: View the about page and FAQ'S and the products that are listed which leads to their product details page.
+- *U*: Users can update the quantity in their shopping bag and also update their profile details (if logged in user)
+- *D*: Users can delete their profile information in their profile form, they can delete the products from their shopping bag.
 
-A blue button should appear to click: _Make Public_,
 
-Another blue button should appear to click: _Open Browser_.
+## Design 
+- The design of this website takes some inspiration from Code Institute's 'Boutqiue Ado' project. However, there are a plethora of customisations from that which gives Observastore its own unique feel. The visuals of the site follow a very dark space esque theme truly vitalising the colors of white and black and spacegray. The design choice was vital to give the functionality of the ecommerce site it's own space like feel.
+- The design of the site lets users flow across the site seemlessly going from one page to another having the feel of being in an online store that is built for their needs which is for enjoyers of the constellations. There are visuals on pages that include images so the user always has something relevant to look at to keep them engaged.
+- The design of the checkout and profile in this project do take alot of inspiration from Boutique Ado... its clean, minimilistic and its true goal is to get the site user to the end goal which is completing their purchase.
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+## Wireframes
 
-To log into the Heroku toolbelt CLI:
+- The initial wireframe of Observastore is alot different to what it is now. It's come a long way in terms of its scope. The wireframes are not as detailed and are what they are meant to be.. just initial mockups of how the site is to look and work. The wireframes that I created are descriptive in their nature as instead of focusing solely on how the site is to look. I wanted to envision what the site could become.
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+## Features 
+- Observastore being a e-commerce store is hailed by a plethora of features for the user to enjoy and for the user to experience. The site is fully interactive where the choices of the user will set their destinations on the site with links leading to new pages such as from the initial landing page the navigation is there for the user to go in any direction they want if that is straight to the products page or if they want to login or register first, or perhaps check the FAQS or check the about page to learn more about Observastore.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+- We will dive into the vast number of functions that are in place at Observastore for the user to enjoy their experience from links... buttons.... prompts and more.
 
-### Connecting your Mongo database
+### Future Features
 
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
+- Observastore seeks to go beyond in the future... there are more features that can be implemented that were in the pipeline but did not make the intial project. 
+- One of these features are a repair service where the user can book in a repair slot for the store which is actually based on a fictional observatory called Observaverse made by me.
+- Another feature is the inclusion of a rental service... to rent out a high grade telescope for a certain select amount of days.
 
-------
-
-## Release History
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**June 18, 2024,** Add Mongo back into template
-
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
-
-**May 28 2024:** Fix Mongo and Links installs
-
-**April 26 2024:** Update node version to 16
-
-**September 20 2023:** Update Python version to 3.9.17.
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
