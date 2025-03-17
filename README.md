@@ -95,6 +95,7 @@ Dashboard (Site Users)
 - [Django Allauth](https://django-allauth.readthedocs.io/en/latest/) was used for user authentication, registration, and account management.
 - [Summernote](https://summernote.org/) was used as a WYSIWYG editor.
 - [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/stable/index.html) was used to render the forms and have them display very well.
+- [Stripe](https://stripe.com/gb) was used to create the payment service for the project.
 
 - These are a few more tools that I used in the inception of the project.
 - [Coolors](https://coolors.co) was used to create a color palette for the website.

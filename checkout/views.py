@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.shortcuts import HttpResponse
 from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.conf import settings
 
@@ -32,6 +33,7 @@ def cache_checkout_data(request):
         return HttpResponse(content=e, status=400)
 
 
+@login_required
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
@@ -143,44 +145,57 @@ def checkout(request):
         # end of the corrected indentation
 
 
+@login_required
 def checkout_success(request, order_number):
     """
-    Handle successful checkouts
+    Handle successful checkouts.
     """
     save_info = request.session.get('save_info')
+    
+    # Fetch the order based on order_number
     order = get_object_or_404(Order, order_number=order_number)
 
-    if request.user.is_authenticated:
-        profile = UserProfile.objects.get(user=request.user)
-        # Attach the user's profile to the order
-        order.user_profile = profile
-        order.save()
+    # Check if the logged-in user is the one who placed the order
+    if order.user == request.user:
+        # User is authorized to view the order
+        if request.user.is_authenticated:
+            profile = UserProfile.objects.get(user=request.user)
+            # Attach the user's profile to the order
+            order.user_profile = profile
+            order.save()
 
-        # Save the user's info
-        if save_info:
-            profile_data = {
-                'default_phone_number': order.phone_number,
-                'default_country': order.country,
-                'default_postcode': order.postcode,
-                'default_town_or_city': order.town_or_city,
-                'default_street_address1': order.street_address1,
-                'default_street_address2': order.street_address2,
-                'default_county': order.county,
-            }
-            user_profile_form = UserProfileForm(profile_data, instance=profile)
-            if user_profile_form.is_valid():
-                user_profile_form.save()
+            # Save the user's info if "save_info" was selected during checkout
+            if save_info:
+                profile_data = {
+                    'default_phone_number': order.phone_number,
+                    'default_country': order.country,
+                    'default_postcode': order.postcode,
+                    'default_town_or_city': order.town_or_city,
+                    'default_street_address1': order.street_address1,
+                    'default_street_address2': order.street_address2,
+                    'default_county': order.county,
+                }
+                user_profile_form = UserProfileForm(profile_data, instance=profile)
+                if user_profile_form.is_valid():
+                    user_profile_form.save()
 
-    messages.success(request, f'Order successfully processed! \
-        Your order number is {order_number}. A confirmation \
-        email will be sent to {order.email}.')
+        # Show success message
+        messages.success(request, f'Order successfully processed! Your order number is {order_number}. A confirmation email will be sent to {order.email}.')
 
-    if 'bag' in request.session:
-        del request.session['bag']
+        # Clear the shopping bag after successful checkout
+        if 'bag' in request.session:
+            del request.session['bag']
 
-    template = 'checkout/checkout_success.html'
-    context = {
-        'order': order,
-    }
+        # Render the success template with the order
+        template = 'checkout/checkout_success.html'
+        context = {
+            'order': order,
+        }
 
-    return render(request, template, context)
+        return render(request, template, context)
+
+    else:
+        # User is not authorized to view this order
+        messages.error(request, "You do not have permission to view this order.")
+        return redirect('home')  # Or redirect to a different page, like order history
+

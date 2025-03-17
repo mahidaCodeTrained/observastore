@@ -12,9 +12,12 @@ import stripe
 @csrf_exempt
 def webhook(request):
     """Listen for webhooks from Stripe"""
+    print("Webhook running")
     # Setup
     wh_secret = settings.STRIPE_WH_SECRET
+    print(wh_secret)
     stripe.api_key = settings.STRIPE_SECRET_KEY
+    print(stripe.api_key)
 
     # Get the webhook data and verify its signature
     payload = request.body
