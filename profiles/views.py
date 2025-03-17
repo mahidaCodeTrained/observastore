@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -38,7 +38,17 @@ def profile(request):
 
 
 def order_history(request, order_number):
+    # Check if the user is authenticated
+    if not request.user.is_authenticated:
+        messages.error(request, "You need to be logged in to view this page.")
+        return redirect('login')  # Redirect to login page if not authenticated
+
     order = get_object_or_404(Order, order_number=order_number)
+
+    # Ensure the order is associated with the logged-in user's profile
+    if order.user_profile is None or order.user_profile.user != request.user:
+        messages.error(request, "You do not have permission to view this order.")
+        return redirect('home')  # Redirect to homepage if the order doesn't belong to the logged-in user
 
     messages.info(request, (
         f'This is a past confirmation for order number {order_number}. '
@@ -52,3 +62,4 @@ def order_history(request, order_number):
     }
 
     return render(request, template, context)
+
