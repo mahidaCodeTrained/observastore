@@ -23,6 +23,9 @@ Observastore is an online e-commerce site where aspiring astronomers and enjoyer
 - [Deployment](#deployment)
 - [Credits](#credits)
 - [Acknowledgements](#acknowledgements)
+</details>
+
+## Agile Development
 
 ## CRUD Functionality
 
