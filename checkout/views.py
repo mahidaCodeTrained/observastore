@@ -158,17 +158,17 @@ def checkout_success(request, order_number):
     # Retrieve the order object
     order = get_object_or_404(Order, order_number=order_number)
 
-    # Check if the order's user_profile exists and belongs to the logged-in user
     if order.user_profile is None:
-        # If no user_profile exists for the order, we try to assign the current user profile
+
         profile = UserProfile.objects.get(user=request.user)
         order.user_profile = profile
         order.save()
-    
+
     # Ensure the order is associated with the logged-in user's profile
     if order.user_profile.user != request.user:
-        messages.error(request, "You do not have permission to view this order.")
-        return redirect('home')  # Redirect to homepage if the order doesn't belong to the logged-in user
+        messages.error(
+            request, "You do not have permission to view this order.")
+        return redirect('home')
 
     save_info = request.session.get('save_info')
 
@@ -193,7 +193,10 @@ def checkout_success(request, order_number):
             if user_profile_form.is_valid():
                 user_profile_form.save()
 
-    messages.success(request, f'Order successfully processed! Your order number is {order_number}. A confirmation email will be sent to {order.email}.')
+    messages.success(
+        request, f'Order successfully processed!\
+Your order number is {order_number}. A confirmation \
+    email will be sent to {order.email}.')
 
     # Clear the shopping bag session
     if 'bag' in request.session:
@@ -206,5 +209,3 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
-
-
