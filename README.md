@@ -26,6 +26,13 @@ Observastore is an online e-commerce site where aspiring astronomers and enjoyer
 </details>
 
 ## Agile Development
+Observastore was developed with Agile methodology at the forefront. The development process was always trying to follow the user stories that were created for this project which were uploaded onto a kanban board so that I could work on each issue one by one and pass the criterias that were set for it. The board was used extensively with this project having over 20 user stories all being completed within the board. In additon, the project has great use of milestones/epics to categorise user stories so specific user stories for example that relate to admin or relate to viewing Observastore can be grouped together for better access. It is paramount to remember that agile methodology is an adaptable and incrementive approach to development; improving the functionality and user experience bit by bit to get the finished article. The epics that were created for this project truly did help with planning, organising and giving an overview of what Observastore needs to accomplish. We will dive into each epic now.
+
+- Admin
+The 'Admin' epic is critical to making Observastore a functioning e-commerce site. The admin epic focused on ensuring that users can create accounts, that the admin can list products, edit products, delete products and create backend logic which will serve to help the site in engagement through creation of forms and pages. The admin can manage all users in the django administration by checking their emails and form submissions and their order history when they are users on the site.
+
+- Viewing Observastore
+- The 'Viewing Observastore' epic focused on making sure that the site display is functional and accessible to site users either if they are logged in or just anonymous. The epic consists of the user stories that seek to help the user interact with the store through creating stories that are focused no accessibility such as search bars and filters for users to find products with and to find all of the products which are listed.
 
 ## CRUD Functionality
 
@@ -63,4 +70,35 @@ Dashboard (Site Users)
 - Observastore seeks to go beyond in the future... there are more features that can be implemented that were in the pipeline but did not make the intial project. 
 - One of these features are a repair service where the user can book in a repair slot for the store which is actually based on a fictional observatory called Observaverse made by me.
 - Another feature is the inclusion of a rental service... to rent out a high grade telescope for a certain select amount of days.
+
+
+## Tools & Technologies 
+- This is the tools and technologies used in this project. 
+- [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) this language was used as the forefront of the project with django.
+- [CSS](https://en.wikipedia.org/wiki/CSS) was used to style html elements in the page.
+- [JavaScript](https://en.wikipedia.org/wiki/JavaScript) was used to add functionality to certain elements with the use of ids.
+- [Django](https://www.djangoproject.com/) Django framework used to create the app and project.
+- [Postgresql](https://www.postgresql.org/) was used as a relational database.
+- [Cloudinary](https://cloudinary.com/home) was used as an image storage for featured_images to be used in project by users.
+- [HTML](https://en.wikipedia.org/wiki/HTML) this was used to create the templates users will see.
+- [Git](https://git-scm.com/) used to control the site via "git add, git commit -m, git push" and etc.
+- [GitHub](https://github.com/) was used to store my code and acess my project repository. 
+- [VScode](https://code.visualstudio.com/) used as an IDE
+- [Pexels](https://www.pexels.com/) used to get images
+- [Bootstrap 5](https://getbootstrap.com/) was used to style html and give it mobile first styling very quickly and easily.
+- [Font Awesome](https://fontawesome.com/) was used to get alot of icons to use in the project
+- [JQuery](https://jquery.com/) was used to create some logic for buttons.
+- [Heroku](https://en.wikipedia.org/wiki/Heroku) was used to deploy the project.
+- [Heroku](https://en.wikipedia.org/wiki/Heroku) was used to deploy the project.
+- [Gunicorn](https://gunicorn.org/) was used as a Python WSGI HTTP Server for UNIX to support the deployment of the Django application. 
+- [Django Template](https://jinja.palletsprojects.com) was used as a templating language for Django to display backend data to HTML through loading or blocking content.
+- [Django Allauth](https://django-allauth.readthedocs.io/en/latest/) was used for user authentication, registration, and account management.
+- [Summernote](https://summernote.org/) was used as a WYSIWYG editor.
+- [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/stable/index.html) was used to render the forms and have them display very well.
+
+- These are a few more tools that I used in the inception of the project.
+- [Coolors](https://coolors.co) was used to create a color palette for the website.
+- [Balsamiq](https://balsamiq.com/) was used to create the wireframes.
+- [Chrome DevTools](https://developer.chrome.com/docs/devtools/) was used for code review and testing.
+- [Favicon.cc](https://www.favicon.cc/) was used to create the site favicon.
 
