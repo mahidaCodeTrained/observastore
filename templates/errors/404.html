@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="card text-center" style="width: 18rem; padding: 20px; border: 2px solid #ccc;">
+        <div class="card-body">
+            <h5 class="card-title">Oops!</h5>
+            <p class="card-text">The page you are looking for could not be found.</p>
+            <a href="{% url 'home' %}" class="btn btn-primary">Go Back Home</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
