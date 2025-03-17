@@ -17,7 +17,6 @@ Observastore is an online e-commerce site where aspiring astronomers and enjoyer
 - [Wireframes](#wireframes)
 - [Mockup Screenshots](#mockup-screenshots)
 - [Features](#features)
-- [Pages](#pages)
 - [Tools & Technologies](#tools--technologies)
 - [Testing](#testing)
 - [Deployment](#deployment)
@@ -193,7 +192,7 @@ Observastore caters to:
 ### Marketing 
 - There is a newsletter built in custom made for this project. This newsletter has a subscribe button which will input their email input and send them a message that they have subscribed. The newsletter is a good way to access the targeted persons to remind them if any offers come about in the site or any reductions or updates to Observastore.
 
-- There is a Facebook Page created just for Observastore.
+- There is a Facebook Page created just for Observastore. [Facebook Page](https://www.facebook.com/people/Observastore/61574166363860/)
 
 
 ## Design 
@@ -259,10 +258,14 @@ Google Fonts was utilised for this project as there was a particular font I want
 | **Product Details** | ![Product Details](/documentation/productdetailsmock.png) |
 | **Shopping Cart** | ![Shopping Cart](/documentation/shoppingbagmock.png) |
 | **Checkout**    | ![Checkout](/documentation/checkoutmock.png) |
+| **Checkout Success**    | ![Checkout Success Page](/documentation/checkoutsuccesspage.png) |
 | **User Profile** | ![User Profile](/documentation/profilemock.png) |
 | **FAQ Page**    | ![FAQ Page](/documentation/faqmock.png) |
 | **About Page**  | ![About Page](/documentation/aboutmockup.png) |
 | **Contact Page** | ![Contact Page](/documentation/contactmock.png) |
+| **Sign In** | ![Sign In Page](/documentation/signinpage.png) |
+| **Sign Up** | ![Sign Up Page](/documentation/signuppage.png) |
+| **Logout** | ![Logout Page](/documentation/features/logout.png) |
 | **404 Page** | ![404 Page](/documentation/404.png) |
 
 - You can see there has been an incredible surge of vision from the initial wireframes to now looking at the final mockup screenshots of the live site. The site has come a long distance and it performs its functionality to a professional standard allowing users to seemelessy go through the pages of the site; all the way to placing an order and capturing that order in the users profile when they sign up. 
@@ -288,7 +291,9 @@ Google Fonts was utilised for this project as there was a particular font I want
 | **Shopping Bag** | ![screenshot](/documentation/features/shoppingbag.png) ![screenshot](/documentation/features/shoppingbagwithmoney.png) | The Shopping Bag in the navigation updates with money when the user adds an item to their shopping bag. It's also a clickable link that takes you to your shopping bag where you can checkout. |
 | **Size and Quantity** | ![screenshot](/documentation/features/sizequantity.pngg) | The site users can select a size and quantity on products (only on products that have sizes can a user select a size) all users can select quantity regardless of the product. |
 | **Messages** | ![screenshot](/documentation/features/messages.png) ![screenshot](/documentation/features/addmessage.png) | There are messages in place for when you add items or update item quantity or even remove items in Observastore. |
-| **Posts Confirmation** | ![screenshot](assets/readmefiles/features/publishedpostfeature.jpg) ![screenshot](assets/readmefiles/features/draftconfirmfeature.jpg) |  |
+| **FAQ Dropdown** | ![screenshot](/documentation/features/faqdropdown.png) ![screenshot](/documentation/features/faqdopdown2.png) | The FAQ page has a dropdown loaded with bootstrap JS |
+| **Payment Features and Order History** | ![screenshot](/documentation/features/payment.png) ![screenshot](/documentation/features/orderhistory.png) | There is Stripe payment in place and also order history |
+| **Back To Top** | ![screenshot](/documentation/features/backtopto.png) | There is a button that is primed with JavaScript that allows the user to press it to return to the top of the page. |
 
 ### Future Features
 
