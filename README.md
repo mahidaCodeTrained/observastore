@@ -252,10 +252,43 @@ Google Fonts was utilised for this project as there was a particular font I want
 
 ## Mockup Screenshots
 
+| Page             | Screenshot |
+|-----------------|------------|
+| **Homepage**    | ![Homepage](/documentation/landingpagemockup.png) |
+| **Product Page** | ![Product Page](/documentation/storefrontmock.png) |
+| **Product Details** | ![Product Details](/documentation/productdetailsmock.png) |
+| **Shopping Cart** | ![Shopping Cart](/documentation/shoppingbagmock.png) |
+| **Checkout**    | ![Checkout](/documentation/checkoutmock.png) |
+| **User Profile** | ![User Profile](/documentation/profilemock.png) |
+| **FAQ Page**    | ![FAQ Page](/documentation/faqmock.png) |
+| **About Page**  | ![About Page](/documentation/aboutmockup.png) |
+| **Contact Page** | ![Contact Page](/documentation/contactmock.png) |
+| **404 Page** | ![404 Page](/documentation/404.png) |
+
+- You can see there has been an incredible surge of vision from the initial wireframes to now looking at the final mockup screenshots of the live site. The site has come a long distance and it performs its functionality to a professional standard allowing users to seemelessy go through the pages of the site; all the way to placing an order and capturing that order in the users profile when they sign up. 
+
+
 ## Features 
 - Observastore being a e-commerce store is hailed by a plethora of features for the user to enjoy and for the user to experience. The site is fully interactive where the choices of the user will set their destinations on the site with links leading to new pages such as from the initial landing page the navigation is there for the user to go in any direction they want if that is straight to the products page or if they want to login or register first, or perhaps check the FAQS or check the about page to learn more about Observastore.
 
 - We will dive into the vast number of functions that are in place at Observastore for the user to enjoy their experience from links... buttons.... prompts and more.
+
+| Feature | Screenshot | Description |
+| :---: | :---: | :---: |
+| **Hover Navigation** | ![screenshot](/documentation/features/hover.png) | The navigation hover changes the text from white to green showing its clickable and interactive |
+| **Name when logged in** | ![screenshot](/documentation/features/namesign.png) | The site shows you your name when logged in instead of the login and register button. |
+| **Sign In/Register and Logout** | ![screenshot](/documentation/features/signupreg.png) ![screenshot](/documentation/features/logout.png) | There is a feature that allows for a user to sign in, register and also logout of an account. (The management is because that user is the superuser) |
+| **Sign Out Prompt** | ![screenshot](/documentation/features/signoutprompt.png) | Observastore allows for there to be a sign out prompt for the user. |
+| **Interactive Category Buttons** | ![screenshot](/documentation/features/interactivebutton.png) | There is a interactive button that lets you go to certain categories of products at Observastore. The buttons have a hover effect tilting and making it glow! |
+| **Linked Footer** | ![screenshot](/documentation/features/linkfooter.png) | The footer has social media links that can be clicked and redirected to. |
+| **Filters** | ![screenshot](/documentation/features/filtersort.png) | There are filters in place for the site user to use to filter the products in the store! |
+| **Search Bar** | ![screenshot](/documentation/features/searchbar.png) | There is a search bar in place for site users to use arnd search for products in Observastore |
+| **Newsletter** | ![screenshot](/documentation/features/newsletter.png) | There is a newsletter in place that a user can sign up to with an input box and subscribe button |
+| **Product Numbers** | ![screenshot](/documentation/features/productnumbers.png) | The site shows how many products are in each category, in all products, or in your search. |
+| **Shopping Bag** | ![screenshot](/documentation/features/shoppingbag.png) ![screenshot](/documentation/features/shoppingbagwithmoney.png) | The Shopping Bag in the navigation updates with money when the user adds an item to their shopping bag. It's also a clickable link that takes you to your shopping bag where you can checkout. |
+| **Size and Quantity** | ![screenshot](/documentation/features/sizequantity.pngg) | The site users can select a size and quantity on products (only on products that have sizes can a user select a size) all users can select quantity regardless of the product. |
+| **Messages** | ![screenshot](/documentation/features/messages.png) ![screenshot](/documentation/features/addmessage.png) | There are messages in place for when you add items or update item quantity or even remove items in Observastore. |
+| **Posts Confirmation** | ![screenshot](assets/readmefiles/features/publishedpostfeature.jpg) ![screenshot](assets/readmefiles/features/draftconfirmfeature.jpg) |  |
 
 ### Future Features
 
