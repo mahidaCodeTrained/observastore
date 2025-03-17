@@ -31,24 +31,45 @@ def add_to_bag(request, item_id):
                 if 'items_by_size' in bag[str(item_id)]:
                     if size in bag[str(item_id)]['items_by_size']:
                         bag[str(item_id)]['items_by_size'][size] += quantity
-                        messages.success(request, f'Updated quantity for "{product.name}" size {size} to {bag[str(item_id)]["items_by_size"][size]}')
+                        messages.success(
+                            request,
+                            f'Updated quantity for "{product.name}" \
+                                  size {size} to '
+                            f'{bag[str(item_id)]["items_by_size"][size]}'
+                        )
                     else:
                         bag[str(item_id)]['items_by_size'][size] = quantity
-                        messages.success(request, f'Added "{product.name}" size {size} to your bag')
+                        messages.success(
+                            request,
+                            f'Added "{product.name}" size {size} to your bag'
+                        )
                 else:
                     bag[str(item_id)] = {'items_by_size': {size: quantity}}
-                    messages.success(request, f'Added "{product.name}" size {size} to your bag')
+                    messages.success(
+                        request,
+                        f'Added "{product.name}" size {size} to your bag'
+                    )
             else:
                 bag[str(item_id)] = {'items_by_size': {size: quantity}}
-                messages.success(request, f'Added "{product.name}" size {size} to your bag')
+                messages.success(
+                    request,
+                    f'Added "{product.name}" size {size} to your bag'
+                )
         else:
             bag[str(item_id)] = {'items_by_size': {size: quantity}}
-            messages.success(request, f'Added "{product.name}" size {size} to your bag')
+            messages.success(
+                request,
+                f'Added "{product.name}" size {size} to your bag'
+            )
     else:
         if str(item_id) in bag:
             if isinstance(bag[str(item_id)], int):
                 bag[str(item_id)] += quantity
-                messages.success(request, f'Updated quantity for "{product.name}" to {bag[str(item_id)]}')
+                messages.success(
+                    request,
+                    f'Updated quantity for\
+                          "{product.name}" to {bag[str(item_id)]}'
+                )
             elif isinstance(bag[str(item_id)], dict):
                 pass
         else:
@@ -61,7 +82,6 @@ def add_to_bag(request, item_id):
 
 
 def adjust_bag(request, item_id):
-
     quantity = int(request.POST.get('quantity'))
     size = request.POST.get('product_size', None)
     bag = request.session.get('bag', {})
@@ -99,13 +119,14 @@ def remove_from_bag(request, item_id):
 
     if str(item_id) in bag:
         if size and 'items_by_size' in bag[str(item_id)]:
-
             if size in bag[str(item_id)]['items_by_size']:
                 del bag[str(item_id)]['items_by_size'][size]
                 if not bag[str(item_id)]['items_by_size']:
                     del bag[str(item_id)]
                 messages.success(
-                    request, f'Removed "{product.name}" size {size} from your bag.')
+                    request,
+                    f'Removed "{product.name}" size {size} from your bag.'
+                )
         else:
             # If no size or just a simple product
             del bag[str(item_id)]

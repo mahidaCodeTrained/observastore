@@ -13,7 +13,8 @@ class ContactRequest(models.Model):
     responded = models.BooleanField(default=False)
 
     def __str__(self):
-        store_good_title = self.store_good.name if self.store_good else "General Inquiry"
+        store_good_title = (
+            self.store_good.name if self.store_good else "General Inquiry")
         return f"Request from {self.name} for {store_good_title}"
 
 
