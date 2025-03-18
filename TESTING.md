@@ -96,3 +96,8 @@ Return to the [README.md](README.md) file.
 | observastore/urls.py | [CI Python Linter](https://pep8ci.herokuapp.com/#) | ![screenshot](/documentation/validation/observastoreurl.png) | Passed all checks |
 | observastore/views.py | [CI Python Linter](https://pep8ci.herokuapp.com/#) | ![screenshot](/documentation/validation/observastoreview.png) | Passed all checks |
 
+- Settings.py and env.py wont be included as settings.py has errors that are created by django and as per the criteria Im only showing files that I have worked on and created. The env.py file cant be shown because it holds sensitive information. 
+- [Go Back To Top If You Want](#testingmd)
+
+
+## Lighthouse
