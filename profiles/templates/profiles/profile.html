@@ -77,14 +77,9 @@
         </div>
     </div>
 
-    <div class="text-center">
-        <button id="backToTop" class="top-button" style="display: none;">
-            <i class="fas fa-arrow-up"></i>
-        </button>
-    </div>
 {% endblock %}
 
 {% block postloadjs %}
     {{ block.super }}
-    <script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
+    <script src="{% static 'profiles/js/countryfield.js' %}"></script>
 {% endblock %}

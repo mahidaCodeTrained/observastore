@@ -102,7 +102,7 @@
                     <div class="row mt-4">
                         <div class="col text-right">
                             <!-- Keep Shopping Button -->
-                            <a href="{% url 'storefront' %}" class="btn btn-dark rounded-0 w-100 mb-3" id="smallfont">
+                            <a href="{% url 'storefront' %}" class="btn btn-dark rounded-0 w-100 mb-3 smallfont" >
                                 <span class="icon">
                                     <i class="fas fa-chevron-left"></i>
                                 </span>
@@ -110,7 +110,7 @@
                             </a>
                     
                             <!-- Checkout Button -->
-                            <a href="{% url 'checkout' %}" class="btn btn-primary rounded-0 w-100" id="smallfont">
+                            <a href="{% url 'checkout' %}" class="btn btn-primary rounded-0 w-100 smallfont">
                                 <span class="text-uppercase">Proceed to Checkout</span>
                                 <span class="icon">
                                     <i class="fas fa-lock"></i>
@@ -132,12 +132,6 @@
         </div>
     </div>
     
-    <div class="text-center mt-3">
-        <button id="backToTop" class="top-button" style="display: none;">
-            <i class="fas fa-arrow-up"></i>
-        </button>
-    </div>
-
     <script>
         // Increase quantity function all these functions additionally ensure that the product size even if it's the same product
         // can be changed in terms of quantity.

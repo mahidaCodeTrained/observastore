@@ -47,8 +47,9 @@ def order_history(request, order_number):
 
     # Ensure the order is associated with the logged-in user's profile
     if order.user_profile is None or order.user_profile.user != request.user:
-        messages.error(request, "You do not have permission to view this order.")
-        return redirect('home')  # Redirect to homepage if the order doesn't belong to the logged-in user
+        messages.error(
+            request, "You do not have permission to view this order.")
+        return redirect('home')
 
     messages.info(request, (
         f'This is a past confirmation for order number {order_number}. '
@@ -62,4 +63,3 @@ def order_history(request, order_number):
     }
 
     return render(request, template, context)
-

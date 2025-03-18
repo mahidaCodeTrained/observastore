@@ -19,35 +19,29 @@
         <div class="col-12">
             <div class="content-box p-4 rounded shadow-lg" id="aboutpage">
                 <header class="text-center mb-4 text-white">
-                    <h1 id="about-font-size">{{ about.title }}</h1>
+                    <h1 class="about-font-size">{{ about.title }}</h1>
                 </header>
 
                 <section id="mission" class="my-4 text-white">
                     <h2>Mission</h2>
-                    <p id="about-font-size">{{ about.mission|safe }}</p>
+                    <p>{{ about.mission|safe }}</p>
                 </section>
 
                 <section id="history" class="my-4 text-white">
-                    <h2 id="about-font-size">History</h2>
+                    <h2 class="about-font-size">History</h2>
                     <p>{{ about.history|safe }}</p>
                 </section>
 
                 <section id="why-shop-here" class="my-4 text-white">
-                    <h2 id="about-font-size">Why Shop Here?</h2>
+                    <h2 class="about-font-size">Why Shop Here?</h2>
                     <p>{{ about.why_shop_here|safe }}</p>
                 </section>
 
                 <section class="text-center mt-4 text-white">
-                    <p><strong>Last updated on:</strong> {{ about.updated_on }}</p>
+                    <h5><strong>Last updated on:</strong> {{ about.updated_on }}</h5>
                 </section>
             </div>
         </div>
-    </div>
-
-    <div class="text-center mt-3">
-        <button id="backToTop" class="top-button" style="display: none;">
-            <i class="fas fa-arrow-up"></i>
-        </button>
     </div>
 
 {% endblock %}
