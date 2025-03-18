@@ -4,6 +4,8 @@ Observastore is an online e-commerce site where aspiring astronomers and enjoyer
 
 - The project is extensive this README.md file will go through the process of creating Observastore from the business models, development approaches, features, tools and technologies, testing and more. As shopping at Observastore wishes to unlock your eyes to observe the night skies we will observe just how this e-commerce project Observastore came to be.
 
+The link to the livesite can be found right [here](https://observastore-5005d64a3140.herokuapp.com/)
+
 ## Table of Contents
 <details>
 
@@ -331,9 +333,146 @@ Google Fonts was utilised for this project as there was a particular font I want
 - [Summernote](https://summernote.org/) was used as a WYSIWYG editor.
 - [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/stable/index.html) was used to render the forms and have them display very well.
 - [Stripe](https://stripe.com/gb) was used to create the payment service for the project.
+- [Facebook](https://www.facebook.com/) was used to create the Observastore profile page.
 
 - These are a few more tools that I used in the inception of the project.
 - [Coolors](https://coolors.co) was used to create a color palette for the website.
 - [Balsamiq](https://balsamiq.com/) was used to create the wireframes.
 - [Chrome DevTools](https://developer.chrome.com/docs/devtools/) was used for code review and testing.
 - [Favicon.cc](https://www.favicon.cc/) was used to create the site favicon.
+
+## Testing
+
+ Please refer to the [TESTING.md](TESTING.md) file to see the testing of the website.
+
+
+ ## Deployment
+
+ ### Stripe Setup
+
+ 1. You need to register for a Stripe Account at [Stripe](https://stripe.com/gb)
+ 2. Once you have registered an account at Stripe you need to go to your developers dashboard and go either in the search bar or just through basic navigation find "API Keys" which should be in a sidebar.
+ 3. You need to copy the `public` key and also copy the `secret` key and add those two into your env.py file which should always be hidden in .gitignore.
+ 4. You need to also update your settings.py in your project app with this code.
+- STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY")
+- STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
+
+5. You need to then open up the terminal in your codespace and pip install stripe to install the stripe package.
+
+7. You will need to have created an Order Model so that you can have a use for Stripe.
+
+8. Set up a payment app and its associated structure such as checkout in Observastore.
+
+9. Add a payment form to the payment app's template like the one in Observastore's checkout.
+
+10. You need to include the stripe-element id inside of the payment form in a div so that stripe can wire up to the payment form.
+
+11. Create a view to handle the payment setup:
+
+Retrieve the public key: stripe_public_key = settings.STRIPE_PUBLIC_KEY.
+Retrieve the secret key: stripe_secret_key = settings.STRIPE_SECRET_KEY.
+Create a payment intent: intent = stripe.PaymentIntent.create(**kwargs).
+Include in **kwargs:
+amount: Payment amount.
+currency: Payment currency.
+metadata: Include additional data, such as user_id.
+Example context for the view:
+
+```
+context = {
+    'my_profile': my_profile,
+    'total_sum': total_sum,
+    'client_secret': intent.client_secret,
+    'stripe_public_key': stripe_public_key,
+}
+```
+
+12. Add an extra JavaScript block in your payment template, including CSRF token and Stripe public key:
+
+```
+{% block postloadjs %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+{% endblock %}
+```
+
+13. You can create this in any js file it doesnt have to be called stripe elements but make sure that you are holding the payment confirmation process and your client secret and public key varibales.
+
+14. You need to modify the payment template which would be your checkout so you can include the public key and client secret so it can be passed from your views.
+
+15. In your webhook_handler.py you need to create the logic for payment intents and email confirmations if you will have that in your project.
+
+16. Once the payment and webhook_handler is set up then you can create a success page when the user clicks on the checkout button in the template which should redirect them as they have done a successful payment.
+
+17. You can test the payment flow using...
+- Test card (no authentication required): 4242 4242 4242 4242
+- Test card (authentication required): 4000 0025 0000 3155
+- Test card (error): 4000 0000 0000 9995
+
+18. That should configure Stripe and get it up and running on your own projects!
+
+### Heroku
+
+Deployment to [Heroku](https://www.heroku.com) was completed using the following steps:
+
+1. Prepare for deployment.
+    - Create an env.py file in your main directory and add *DATABASE_URL*, *CLOUDINARY_URL*, and *SECRET_KEY* and *STRIPE_PUBLIC_KEY* *STRIPE_SECRET_KEY* and *STRIPE_WH_SECRET* ensure that this is hidden by adding env.py in the .gitignore.
+    - Create a file named *Procfile* in your main directory and add *web: gunicorn project-name.wsgi* to execute your project this lets Heroku know what to do.
+    - Create a file named *python-version* in your main directory and add the version of Python you are using.
+    - Import *DATABASE_URL* and *SECRET_KEY* and the *STRIPE* keys in your env.py into your *settings.py* file, and remove the default database configuration.
+    - Update your *Installed Apps* in *settings.py* to include your locally created and installed apps.
+    - Update your *ALLOWED_HOSTS* in *settings.py* to include Heroku.
+    - Install *gunicorn* and *whitenoise* to your virtual environment.
+    - Update the *requirements.txt* file this allows Heroku to know what the dependencies are.
+    - Update your *settings.py* file to read *DEBUG = FALSE* this way you dont leak sensitive information.
+2. Create a new App.
+    - Log in to Heroku and click *Create New App* from the Dashboard.
+    - Enter a unique app name and choose your region.
+    - Click *Create App*.
+3. Update your *ConfigVars*.
+    - Go to *Settings* > *Reveal ConfigVars* and update the following information:
+        - SECRET_KEY
+        - DATABASE_URL
+        - CLOUDINARY_URL (if using Cloudinary)
+        - EMAIL_HOST_USER (If you are using emails.)
+        - EMAIL_HOST_PASS (If you are using emails.)
+        - STRIPE_PUBLIC_KEY
+        - STRIPE_SECRET_KEY
+        - STRIPE_WH_SECRET
+4. Deploy the project.
+    - Go to *Deploy* and specify deployment details.
+    - Select *GitHub* as the *Deployment Method*.
+        - When prompted to *Connect to GitHub*, find your repository and click *Connect*.
+    - Select either *Automatic Deploys* or *Manual Deploys* and click *Deploy Branch*.
+5. Once deployment is complete, click *View* or *Open App* for the deployed project. 
+6. If you come across an error where your styling isnt loading then it is likely due to you not collecting staticfiles which you can do with *python manage.py collectstatic*
+
+### Cloning
+You can clone the repository by following these steps:
+
+1. Go to the [GitHub repository](https://github.com/mahidaCodeTrained/observastore) 
+2. Locate the Code button above the list of files and click it 
+3. Select if you prefer to clone using HTTPS, SSH, or GitHub CLI and click the copy button to copy the URL to your clipboard
+4. Open Git Bash or Terminal
+5. Change the current working directory to the one where you want the cloned directory
+6. In your IDE Terminal, type the following command to clone my repository:
+	- `git clone https://github.com/mahidaCodeTrained/observastore.git`
+7. Press Enter to create your local clone.
+
+## Credits
+- This will credit things and resources that helped me build this project.
+
+| Source | Location | Notes |
+| --- | --- | --- |
+| [Alan Bushell's GitHub Repo](https://github.com/Alan-Bushell/blackjack) | README.md, TESTING.md | This gave me alot of knowledge on how to structure certain elements of a README.md file for as python project this helped me with this readme aswell for a django project.
+| [Code Institute](https://codeinstitute.net/) | Project | Code Institute's Boutique Ado was a great use to understand how a blog should function and inspired this project that I have made my own with it's identity and its custom logic.
+
+##  Acknowledgements
+- I would like to thank alot of people in particular with their support during my journey creating not just this project but all the projects that I have created thus far. 
+- I would like to thank Alan Bushell who was my first ever mentor, Chris Quinn who was a cover menor for me at one point during my journey in software development, Tim Nelson who was a cover mentor during one point of my journey. Sheryl Goldberg who was my old mentor until I got my new mentor Rory Patrick Sheridan who has helped me so much with boosting myself to create Observastore.
+- I would like to thank the Code Institute slack channel where I was very active in the morning always telling myself how much work I was going to do to complete this project. 
+- I also would like to give a special acknowledgement to Jim Morel who really helped me during a time where I felt extremely down and anxious coming to terms that this would be my final project at Code Institue but one of the first in my goals to becoming a software developer, thank you Jim!
+
+[Back to Top](#readme)
