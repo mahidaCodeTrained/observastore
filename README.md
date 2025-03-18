@@ -1,4 +1,5 @@
 # Observastore
+![screenshot](/documentation/hero.png)
 
 Observastore is an online e-commerce site where aspiring astronomers and enjoyers of the great beyond of Space can gather to purchase the products tailor made to fit their needs whether it is a high end to budget telescope to observe the night skies or a custom globe built to detail planets or a designed t-shirt highlighting their love for space. Observastore is built to ensure that they have what they need when they come to purchase on the site.
 
