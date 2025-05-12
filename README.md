@@ -92,6 +92,7 @@ Dashboard (Site Users)
 ## Entity Relationship
 - Observastore has a plethora of models that have relationships between eachother on their functionality and their existence see the screenshot below which outlines the models that are within the project. We will dive into each model and discuss the relationships they have.
 
+This is an ERD Diagram.
 ![screenshot](/documentation/entitydiagram.png)
 
 - We will start of talking about the user. The user as a e-commerce store must uphold to achieve... has a one to many relationship with the 'Order' model. There is no limit to how many orders a user can place at Observastore. This is critical as you always want repeat shoppers in your business.
